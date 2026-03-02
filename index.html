@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的算法 · 公司官网</title>
+    <style>
+        /* 极简风格CSS，让页面好看 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 20px; text-align: center; }
+        h1 { font-size: 3em; margin-bottom: 20px; }
+        .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .section-title { text-align: center; font-size: 2.2em; margin-bottom: 40px; color: #2d3748; }
+        .algo-card { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; border: 1px solid #e2e8f0; }
+        .algo-name { font-size: 1.5em; color: #667eea; margin-bottom: 15px; }
+        .video-section { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+        .video-item { flex: 1 1 400px; background: #f7fafc; border-radius: 10px; padding: 20px; }
+        iframe { width: 100%; height: 300px; border: none; border-radius: 8px; }
+        footer { background: #2d3748; color: white; text-align: center; padding: 30px; margin-top: 60px; }
+        @media (max-width: 768px) { h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>✨ [你的算法名称]</h1>
+        <p class="subtitle">[一句话介绍你的算法，比如：下一代图像识别引擎，准确率99.7%]</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">🎯 算法核心</h2>
+        <div class="algo-card">
+            <div class="algo-name">🚀 创新点</div>
+            <p>在这里详细介绍你的算法有什么创新之处。比如：基于Transformer改进，推理速度提升50%，参数量减少30%...</p>
+        </div>
+        
+        <div class="algo-card">
+            <div class="algo-name">⚡ 应用场景</div>
+            <p>你的算法可以用在什么地方？自动驾驶？医疗影像？智能推荐？写在这里。</p>
+        </div>
+        
+        <div class="algo-card">
+            <div class="algo-name">📊 性能对比</div>
+            <p>准确率：99.7% | 推理速度：5ms | 参数量：1.2M</p>
+            <p>（比传统算法提升xx%，比SOTA模型快xx倍）</p>
+        </div>
+
+        <h2 class="section-title">🎬 演示视频</h2>
+        <div class="video-section">
+            <div class="video-item">
+                <h3 style="margin-bottom: 15px;">Bilibili 演示</h3>
+                <!-- 在这里粘贴你的B站视频嵌入代码 -->
+                <iframe src="//player.bilibili.com/player.html?bvid=BV1xx411c79H&page=1" allowfullscreen></iframe>
+            </div>
+            <div class="video-item">
+                <h3 style="margin-bottom: 15px;">YouTube 演示</h3>
+                <!-- 在这里粘贴你的YouTube视频嵌入代码 -->
+                <iframe src="https://www.youtube.com/embed/你的视频ID" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="font-size: 1.2em; color: #4a5568;">📧 商务合作：your.email@example.com</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 [你的公司名称]. All rights reserved.</p>
+    </footer>
+</body>
+</html>
