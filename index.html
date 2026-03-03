@@ -353,34 +353,45 @@
             </div>
         </div>
 
-        <!-- 视频修改位置在这里！！！ -->
-        <h2 class="section-title" style="margin-top: 70px;"><span>🎬 演示视频</span></h2>
-        <div class="video-section">
-            <!-- Bilibili 演示 - 在这里修改你的B站视频链接 -->
-            <div class="video-item">
-                <h3>📺 Bilibili · 乱石堆自适应步态</h3>
-                <div class="video-wrapper" id="biliWrapper">
-                    <!-- 封面图片可以换成你的实际封面图 -->
-                    <img src="https://via.placeholder.com/640x360/0A2647/7AB2E0?text=MPGS+Bilibili+预览+点击播放" alt="视频封面" class="video-thumbnail">
-                    <div class="play-button">▶</div>
-                    <!-- ⬇️⬇️⬇️ 在这里修改B站视频链接 ⬇️⬇️⬇️ -->
-                    <iframe class="video-iframe" id="biliIframe" src="" data-src="//player.bilibili.com/video/BV1iiP5zfE9a/?spm_id_from=333.1387.homepage.video_card.click&vd_source=967edc55fbbab685336cb008f3aca5dd" allowfullscreen></iframe>
-                </div>
-                <p style="margin-top: 15px; color: #A3C6E9;">在乱石斜坡环境中实时重规划，机身平稳，无停顿。</p>
-            </div>
-            <!-- YouTube 演示 - 在这里修改你的YouTube视频链接 -->
-            <div class="video-item">
-                <h3>📺 YouTube · 雪地与楼梯混合地形</h3>
-                <div class="video-wrapper" id="ytWrapper">
-                    <!-- 封面图片可以换成你的实际封面图 -->
-                    <img src="https://via.placeholder.com/640x360/1B3B6A/9AC4FF?text=MPGS+YouTube+预览+点击播放" alt="视频封面" class="video-thumbnail">
-                    <div class="play-button">▶</div>
-                    <!-- ⬇️⬇️⬇️ 在这里修改YouTube视频链接 ⬇️⬇️⬇️ -->
-                    <iframe class="video-iframe" id="ytIframe" src="" data-src="https://www.youtube.com/embed/MPGS-demo?autoplay=0&mute=1&modestbranding=1" allowfullscreen></iframe>
-                </div>
-                <p style="margin-top: 15px; color: #A3C6E9;">雪地、楼梯及湿滑路面测试，步态平滑切换，无预编程。</p>
-            </div>
+       <!-- 视频修改 - 一键播放版本 -->
+<h2 class="section-title" style="margin-top: 70px;"><span>🎬 演示视频</span></h2>
+<div class="video-section">
+    <!-- Bilibili 演示 - 修复版 -->
+    <div class="video-item">
+        <h3>📺 Bilibili · 乱石堆自适应步态</h3>
+        <div class="video-wrapper" id="biliWrapper" style="cursor: pointer;">
+            <!-- 封面图片 -->
+            <img src="https://via.placeholder.com/640x360/0A2647/7AB2E0?text=点击播放+B站演示" alt="视频封面" class="video-thumbnail" id="biliThumb">
+            <div class="play-button">▶</div>
+            <!-- B站嵌入代码 - 正确格式，带autoplay=1 -->
+            <iframe class="video-iframe" id="biliIframe" 
+                    src=""
+                    data-src="https://player.bilibili.com/player.html?bvid=BV1iiP5zfE9a&autoplay=1&high_quality=1&danmaku=0"
+                    allowfullscreen="true" 
+                    allow="autoplay; fullscreen">
+            </iframe>
         </div>
+        <p style="margin-top: 15px; color: #A3C6E9;">在乱石斜坡环境中实时重规划，机身平稳，无停顿。</p>
+    </div>
+    
+    <!-- YouTube 演示 - 修复版 -->
+    <div class="video-item">
+        <h3>📺 YouTube · 雪地与楼梯混合地形</h3>
+        <div class="video-wrapper" id="ytWrapper" style="cursor: pointer;">
+            <!-- 封面图片 -->
+            <img src="https://via.placeholder.com/640x360/1B3B6A/9AC4FF?text=点击播放+YouTube演示" alt="视频封面" class="video-thumbnail" id="ytThumb">
+            <div class="play-button">▶</div>
+            <!-- YouTube嵌入代码 - 带autoplay=1 -->
+            <iframe class="video-iframe" id="ytIframe" 
+                    src=""
+                    data-src="https://www.youtube.com/embed/wWwhnUhoblE?autoplay=1&mute=0&modestbranding=1&rel=0"
+                    allowfullscreen="true"
+                    allow="autoplay; fullscreen">
+            </iframe>
+        </div>
+        <p style="margin-top: 15px; color: #A3C6E9;">雪地、楼梯及湿滑路面测试，步态平滑切换，无预编程。</p>
+    </div>
+</div>
 
         <div style="text-align: center; margin-top: 70px;">
             <div class="contact-block">
@@ -399,17 +410,21 @@
     </footer>
 
     <script>
-        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
-            wrapper.addEventListener('click', function() {
-                if (this.classList.contains('active')) return;
-                const iframe = this.querySelector('.video-iframe');
-                const src = iframe.getAttribute('data-src');
-                if (src) {
-                    iframe.setAttribute('src', src);
-                }
-                this.classList.add('active');
-            });
-        });
-    </script>
+    // B站视频播放
+    document.getElementById('biliWrapper').addEventListener('click', function() {
+        if (this.classList.contains('active')) return;
+        const iframe = document.getElementById('biliIframe');
+        iframe.src = iframe.getAttribute('data-src');
+        this.classList.add('active');
+    });
+
+    // YouTube视频播放
+    document.getElementById('ytWrapper').addEventListener('click', function() {
+        if (this.classList.contains('active')) return;
+        const iframe = document.getElementById('ytIframe');
+        iframe.src = iframe.getAttribute('data-src');
+        this.classList.add('active');
+    });
+</script>
 </body>
 </html>
