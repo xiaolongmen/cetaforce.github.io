@@ -9,13 +9,13 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            color: #e5e9f0;
-            background-color: #0B1A2F; /* 深海暗夜 */
+            color: #1E293B; /* 深灰色文字，更柔和 */
+            background-color: #FFFFFF; /* 白色底色 */
         }
         header {
-            background: linear-gradient(135deg, #0A2647 0%, #1B3B6A 100%); /* 深海蓝渐变 */
+            background: linear-gradient(135deg, #0A2647 0%, #1E3A5F 100%); /* 深海蓝渐变保留 */
             color: white;
-            padding: 120px 20px;
+            padding: 100px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -27,7 +27,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(44, 95, 138, 0.2) 0%, transparent 60%);
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
             pointer-events: none;
         }
         h1 {
@@ -45,19 +45,19 @@
             margin: 0 auto;
             position: relative;
             font-weight: 300;
-            color: #CFE5FF;
+            color: rgba(255, 255, 255, 0.9);
         }
         .algo-badge {
             display: inline-block;
-            background: rgba(10, 38, 71, 0.5);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
             padding: 8px 18px;
             border-radius: 40px;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             margin-bottom: 30px;
-            border: 1px solid rgba(44, 95, 138, 0.4);
-            color: #CFE5FF;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
         }
         .container {
             max-width: 1200px;
@@ -68,12 +68,12 @@
             text-align: center;
             font-size: 2.4em;
             margin-bottom: 50px;
-            color: #ffffff;
+            color: #0A2647; /* 深海蓝标题 */
             font-weight: 600;
             letter-spacing: -0.01em;
         }
         .section-title span {
-            background: linear-gradient(135deg, #7AB2E0, #B5D6FF);
+            background: linear-gradient(135deg, #0A2647, #2C5F8A);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -90,36 +90,36 @@
             margin-top: 30px;
         }
         .card {
-            background: #102A43; /* 深海深色 */
+            background: #FFFFFF; /* 白色卡片 */
             border-radius: 24px;
             padding: 32px;
-            box-shadow: 0 10px 30px -5px rgba(0, 10, 30, 0.5);
-            border: 1px solid #1E3F5C;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #E9EEF2; /* 极浅灰边框 */
             transition: transform 0.2s, box-shadow 0.2s;
-            color: #E2EEFF;
+            color: #334155;
         }
         .card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 25px 40px -10px rgba(0, 60, 120, 0.4);
-            border-color: #2C5F8A;
+            box-shadow: 0 15px 30px rgba(10, 38, 71, 0.08);
+            border-color: #B8CDE0;
         }
         .card-icon {
             font-size: 2.2rem;
             margin-bottom: 20px;
-            color: #7AB2E0;
+            color: #0A2647; /* 深海蓝图标 */
         }
         .card-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 16px;
-            color: #B5D6FF;
+            color: #0A2647; /* 深海蓝标题 */
         }
         .stats-highlight {
-            background: #0F2A40;
+            background: #F8FAFC; /* 极浅灰背景 */
             padding: 30px;
             border-radius: 28px;
-            border: 1px solid #1E4A6E;
-            color: #E2EEFF;
+            border: 1px solid #E2E8F0;
+            color: #334155;
         }
         .stat-item {
             display: flex;
@@ -130,24 +130,24 @@
         .stat-number {
             font-size: 2.8rem;
             font-weight: 700;
-            color: #9AC4FF;
+            color: #0A2647; /* 深海蓝数字 */
             line-height: 1.2;
         }
         .stat-label {
-            color: #A3C6E9;
+            color: #64748B;
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.03em;
         }
         .badge {
-            background: #1B3F5C;
-            color: #C5E0FF;
+            background: #EFF6FF; /* 浅蓝背景 */
+            color: #0A2647; /* 深海蓝文字 */
             padding: 4px 12px;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 500;
             display: inline-block;
-            border: 1px solid #2C5F8A;
+            border: 1px solid #BCD5ED;
         }
         .video-section {
             display: flex;
@@ -158,28 +158,28 @@
         }
         .video-item {
             flex: 1 1 450px;
-            background: #0F263B;
+            background: #FFFFFF;
             border-radius: 28px;
             padding: 20px 20px 25px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            border: 1px solid #1E4A6E;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid #E2E8F0;
         }
         .video-item h3 {
             font-size: 1.4rem;
             margin-left: 10px;
             margin-bottom: 20px;
-            color: #B5D6FF;
+            color: #0A2647; /* 深海蓝标题 */
             font-weight: 500;
         }
         .video-wrapper {
             position: relative;
             width: 100%;
-            background: #0A2647;
+            background: #F1F5F9;
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
             aspect-ratio: 16 / 9;
-            border: 1px solid #2C5F8A;
+            border: 1px solid #CBD5E1;
         }
         .video-thumbnail {
             width: 100%;
@@ -195,7 +195,7 @@
             transform: translate(-50%, -50%);
             width: 68px;
             height: 68px;
-            background: rgba(10, 38, 71, 0.8);
+            background: rgba(10, 38, 71, 0.9);
             backdrop-filter: blur(4px);
             border-radius: 50%;
             display: flex;
@@ -203,13 +203,12 @@
             justify-content: center;
             color: white;
             font-size: 28px;
-            border: 2px solid rgba(122, 178, 224, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.8);
             transition: background 0.2s, transform 0.15s;
             pointer-events: none;
         }
         .video-wrapper:hover .play-button {
-            background: #1B4D6E;
-            border-color: #B5D6FF;
+            background: #1E3A5F;
             transform: translate(-50%, -50%) scale(1.05);
         }
         .video-iframe {
@@ -229,54 +228,57 @@
         }
         .tech-tag {
             font-family: 'SF Mono', 'Fira Code', monospace;
-            background: #0A2647;
-            color: #B5D6FF;
+            background: #F1F5F9;
+            color: #0A2647;
             padding: 2px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
-            border: 1px solid #2C5F8A;
+            border: 1px solid #CBD5E1;
         }
         .contact-block {
-            background: #0F2A40;
+            background: #F8FAFC;
             border-radius: 50px;
             padding: 20px 40px;
             display: inline-block;
             margin: 40px auto 0;
-            border: 1px solid #2C5F8A;
-            color: #E2EEFF;
+            border: 1px solid #E2E8F0;
+            color: #334155;
         }
         .contact-block span:last-child {
-            background: #1B3F5C;
+            background: #0A2647; /* 深海蓝按钮 */
             color: white;
-            border: 1px solid #7AB2E0;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 40px;
+            display: inline-block;
         }
         footer {
-            background: #051A2F;
-            color: #8FB4D9;
+            background: #F8FAFC; /* 浅灰页脚 */
+            color: #64748B;
             text-align: center;
             padding: 40px 20px;
             margin-top: 40px;
             font-size: 0.95rem;
-            border-top: 1px solid #1E3F5C;
+            border-top: 1px solid #E2E8F0;
         }
         hr {
             border: none;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #2C5F8A, transparent);
+            background: linear-gradient(90deg, transparent, #CBD5E1, transparent);
             margin: 40px 0;
         }
         .name-glow {
-            background: linear-gradient(145deg, #9AC4FF, #D4E8FF);
+            background: linear-gradient(145deg, #FFFFFF, #E0F0FF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
         a {
-            color: #9AC4FF;
+            color: #0A2647;
             text-decoration: none;
         }
         a:hover {
-            color: #C5E0FF;
+            color: #2C5F8A;
         }
         @media (max-width: 768px) {
             h1 { font-size: 2.4em; }
@@ -287,7 +289,7 @@
 </head>
 <body>
     <header>
-        <div class="algo-badge">深海算力 · 并行模拟 · 实时评分 · 自适应步态</div>
+        <div class="algo-badge">并行模拟 · 实时评分 · 自适应步态</div>
         <h1>MPGS: <span class="name-glow">模型预测步态评分</span></h1>
         <p class="subtitle">毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的敏捷与鲁棒性</p>
     </header>
@@ -317,26 +319,26 @@
 
         <div class="grid-2" style="margin-top: 60px;">
             <div class="stats-highlight">
-                <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: #B5D6FF;">📊 性能对比</h3>
+                <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: #0A2647;">📊 性能对比</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
                     <div class="stat-item">
                         <div class="stat-number">0.8<span style="font-size:1.5rem;">ms</span></div>
                         <div class="stat-label">单次规划延迟</div>
-                        <div style="margin-top: 8px; color: #7AB2E0;">▼ 62% vs MPC</div>
+                        <div style="margin-top: 8px; color: #2C5F8A;">▼ 62% vs MPC</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">5k</div>
                         <div class="stat-label">并行轨迹数</div>
-                        <div style="margin-top: 8px; color: #7AB2E0;">GPU 原生加速</div>
+                        <div style="margin-top: 8px; color: #2C5F8A;">GPU 原生加速</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">94<span style="font-size:1.5rem;">%</span></div>
                         <div class="stat-label">能耗平滑度</div>
-                        <div style="margin-top: 8px; color: #7AB2E0;">优于MPPI 21%</div>
+                        <div style="margin-top: 8px; color: #2C5F8A;">优于MPPI 21%</div>
                     </div>
                 </div>
                 <hr style="margin: 30px 0;">
-                <p style="font-size: 1.1rem; color: #CFE5FF;">✔ 比传统MPPI方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人Unitree B2上实测，能耗降低18%，机身倾斜角方差减少43%。</p>
+                <p style="font-size: 1.1rem; color: #475569;">✔ 比传统MPPI方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人Unitree B2上实测，能耗降低18%，机身倾斜角方差减少43%。</p>
             </div>
             <div class="card" style="display: flex; flex-direction: column;">
                 <div class="card-icon">🌍</div>
@@ -347,60 +349,56 @@
                     <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong>敏捷机器人竞赛</strong> – 高速奔跑下实时步态切换，越障更流畅。</li>
                     <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong>学术研究</strong> – 即插即用的GPU步态规划模块，支持二次开发。</li>
                 </ul>
-                <div style="margin-top: auto; background: #1B3F5C; border-radius: 30px; padding: 12px 20px; color: #CFE5FF; border: 1px solid #2C5F8A;">
+                <div style="margin-top: auto; background: #EFF6FF; border-radius: 30px; padding: 12px 20px; color: #0A2647; border: 1px solid #BCD5ED;">
                     📌 已集成到 ROS 2 / Isaac Sim 生态
                 </div>
             </div>
         </div>
 
-       <!-- 视频修改 - 一键播放版本 -->
-<h2 class="section-title" style="margin-top: 70px;"><span>🎬 演示视频</span></h2>
-<div class="video-section">
-    <!-- Bilibili 演示 - 修复版 -->
-    <div class="video-item">
-        <h3>📺 Bilibili · 乱石堆自适应步态</h3>
-        <div class="video-wrapper" id="biliWrapper" style="cursor: pointer;">
-            <!-- 封面图片 -->
-            <img src="https://via.placeholder.com/640x360/0A2647/7AB2E0?text=点击播放+B站演示" alt="视频封面" class="video-thumbnail" id="biliThumb">
-            <div class="play-button">▶</div>
-            <!-- B站嵌入代码 - 正确格式，带autoplay=1 -->
-            <iframe class="video-iframe" id="biliIframe" 
-                    src=""
-                    data-src="https://player.bilibili.com/player.html?bvid=BV1iiP5zfE9a&autoplay=1&high_quality=1&danmaku=0"
-                    allowfullscreen="true" 
-                    allow="autoplay; fullscreen">
-            </iframe>
+        <!-- 视频部分 -->
+        <h2 class="section-title" style="margin-top: 70px;"><span>🎬 演示视频</span></h2>
+        <div class="video-section">
+            <!-- Bilibili 演示 -->
+            <div class="video-item">
+                <h3>📺 Bilibili · 乱石堆自适应步态</h3>
+                <div class="video-wrapper" id="biliWrapper" style="cursor: pointer;">
+                    <img src="https://via.placeholder.com/640x360/F1F5F9/0A2647?text=点击播放+B站演示" alt="视频封面" class="video-thumbnail">
+                    <div class="play-button">▶</div>
+                    <iframe class="video-iframe" id="biliIframe" 
+                            src=""
+                            data-src="https://player.bilibili.com/player.html?bvid=BV1iiP5zfE9a&autoplay=1&high_quality=1&danmaku=0"
+                            allowfullscreen="true" 
+                            allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <p style="margin-top: 15px; color: #64748B;">在乱石斜坡环境中实时重规划，机身平稳，无停顿。</p>
+            </div>
+            
+            <!-- YouTube 演示 -->
+            <div class="video-item">
+                <h3>📺 YouTube · 雪地与楼梯混合地形</h3>
+                <div class="video-wrapper" id="ytWrapper" style="cursor: pointer;">
+                    <img src="https://via.placeholder.com/640x360/F1F5F9/0A2647?text=点击播放+YouTube演示" alt="视频封面" class="video-thumbnail">
+                    <div class="play-button">▶</div>
+                    <iframe class="video-iframe" id="ytIframe" 
+                            src=""
+                            data-src="https://www.youtube.com/embed/wWwhnUhoblE?autoplay=1&mute=0&modestbranding=1&rel=0"
+                            allowfullscreen="true"
+                            allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <p style="margin-top: 15px; color: #64748B;">雪地、楼梯及湿滑路面测试，步态平滑切换，无预编程。</p>
+            </div>
         </div>
-        <p style="margin-top: 15px; color: #A3C6E9;">在乱石斜坡环境中实时重规划，机身平稳，无停顿。</p>
-    </div>
-    
-    <!-- YouTube 演示 - 修复版 -->
-    <div class="video-item">
-        <h3>📺 YouTube · 雪地与楼梯混合地形</h3>
-        <div class="video-wrapper" id="ytWrapper" style="cursor: pointer;">
-            <!-- 封面图片 -->
-            <img src="https://via.placeholder.com/640x360/1B3B6A/9AC4FF?text=点击播放+YouTube演示" alt="视频封面" class="video-thumbnail" id="ytThumb">
-            <div class="play-button">▶</div>
-            <!-- YouTube嵌入代码 - 带autoplay=1 -->
-            <iframe class="video-iframe" id="ytIframe" 
-                    src=""
-                    data-src="https://www.youtube.com/embed/wWwhnUhoblE?autoplay=1&mute=0&modestbranding=1&rel=0"
-                    allowfullscreen="true"
-                    allow="autoplay; fullscreen">
-            </iframe>
-        </div>
-        <p style="margin-top: 15px; color: #A3C6E9;">雪地、楼梯及湿滑路面测试，步态平滑切换，无预编程。</p>
-    </div>
-</div>
 
         <div style="text-align: center; margin-top: 70px;">
             <div class="contact-block">
                 <span style="font-size: 1.3rem; margin-right: 15px;">📧</span> 
-                <span style="font-size: 1.2rem; font-weight: 500; color: #CFE5FF;">gait.mps@whalepower.ai</span>
-                <span style="margin:0 20px; color: #2C5F8A;">|</span>
-                <span style="font-size: 1rem; background: #1B3F5C; color: white; padding: 8px 25px; border-radius: 40px; border: 1px solid #7AB2E0;">技术白皮书 · 合作洽谈</span>
+                <span style="font-size: 1.2rem; font-weight: 500; color: #0A2647;">gait.mps@whalepower.ai</span>
+                <span style="margin:0 20px; color: #CBD5E1;">|</span>
+                <span style="font-size: 1rem; background: #0A2647; color: white; padding: 8px 25px; border-radius: 40px; display: inline-block;">技术白皮书 · 合作洽谈</span>
             </div>
-            <p style="margin-top: 30px; color: #8FB4D9;">🔬 算法已申请核心专利 · 欢迎学术引用与合作测试</p>
+            <p style="margin-top: 30px; color: #64748B;">🔬 算法已申请核心专利 · 欢迎学术引用与合作测试</p>
         </div>
     </div>
 
@@ -410,21 +408,21 @@
     </footer>
 
     <script>
-    // B站视频播放
-    document.getElementById('biliWrapper').addEventListener('click', function() {
-        if (this.classList.contains('active')) return;
-        const iframe = document.getElementById('biliIframe');
-        iframe.src = iframe.getAttribute('data-src');
-        this.classList.add('active');
-    });
+        // B站视频播放
+        document.getElementById('biliWrapper').addEventListener('click', function() {
+            if (this.classList.contains('active')) return;
+            const iframe = document.getElementById('biliIframe');
+            iframe.src = iframe.getAttribute('data-src');
+            this.classList.add('active');
+        });
 
-    // YouTube视频播放
-    document.getElementById('ytWrapper').addEventListener('click', function() {
-        if (this.classList.contains('active')) return;
-        const iframe = document.getElementById('ytIframe');
-        iframe.src = iframe.getAttribute('data-src');
-        this.classList.add('active');
-    });
-</script>
+        // YouTube视频播放
+        document.getElementById('ytWrapper').addEventListener('click', function() {
+            if (this.classList.contains('active')) return;
+            const iframe = document.getElementById('ytIframe');
+            iframe.src = iframe.getAttribute('data-src');
+            this.classList.add('active');
+        });
+    </script>
 </body>
 </html>
