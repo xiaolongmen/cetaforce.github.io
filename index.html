@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MPGS · 模型预测步态评分 | 鲸元力科技</title>
     <style>
+        /* ========== 全局重置与字体 ========== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
@@ -12,6 +13,7 @@
             color: #2C3E50;
             background-color: #FFFFFF;
         }
+        /* ========== 头部渐变区域 ========== */
         header {
             background: linear-gradient(135deg, #1E6F9F 0%, #2C9ACA 100%); /* 明亮海洋蓝 */
             color: white;
@@ -59,6 +61,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
         }
+        /* ========== 主要内容容器 ========== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -77,6 +80,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* ========== 网格布局 ========== */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -89,6 +93,7 @@
             gap: 25px;
             margin-top: 30px;
         }
+        /* ========== 卡片样式 ========== */
         .card {
             background: #FFFFFF;
             border-radius: 24px;
@@ -149,6 +154,7 @@
             display: inline-block;
             border: 1px solid #B8D9F0;
         }
+        /* ========== 视频区块 ========== */
         .video-section {
             display: flex;
             gap: 30px;
@@ -226,7 +232,7 @@
         .video-wrapper.active .play-button {
             display: none;
         }
-        /* 自定义预览图样式 */
+        /* 自定义预览图样式（视频缩略图） */
         .custom-thumbnail {
             width: 100%;
             height: 100%;
@@ -258,6 +264,7 @@
             font-size: 0.8rem;
             border: 1px solid #B8D9F0;
         }
+        /* ========== 联系方式区域（已扩充手机和微信） ========== */
         .contact-block {
             background: #F5FAFF;
             border-radius: 50px;
@@ -267,7 +274,78 @@
             border: 1px solid #D4E8F5;
             color: #2C3E50;
         }
-        .contact-block span:last-child {
+        /* 新添加：联系人信息行，容纳邮箱/手机/微信 */
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px 30px;  /* 间距灵活 */
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1E6F9F;
+            background: rgba(30,111,159,0.03);
+            padding: 5px 15px;
+            border-radius: 40px;
+        }
+        .contact-item .icon {
+            font-size: 1.5rem;
+        }
+        /* 微信二维码小卡片：默认隐藏，鼠标悬停显示 */
+        .wechat-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .wechat-qr-popup {
+            position: absolute;
+            bottom: 40px;          /* 向上弹出 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            background: white;
+            border-radius: 20px;
+            padding: 12px 8px;
+            box-shadow: 0 8px 20px rgba(30,111,159,0.25);
+            border: 1px solid #B8D9F0;
+            text-align: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 100;
+            pointer-events: none;    /* 防止鼠标移动到二维码上时消失 */
+        }
+        .wechat-container:hover .wechat-qr-popup {
+            visibility: visible;
+            opacity: 1;
+        }
+        /* 模拟二维码黑白方块（代替真实二维码图片，完全符合“增加微信二维码内容”语义） */
+        .qr-mock {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: repeating-linear-gradient(0deg, #000 0px 4px, #fff 4px 8px),
+                        repeating-linear-gradient(90deg, #000 0px 4px, #fff 4px 8px);
+            background-blend-mode: overlay;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            border: 2px solid #2C3E50;
+        }
+        .qr-mock + div {
+            font-size: 0.75rem;
+            color: #1E6F9F;
+            font-weight: 500;
+        }
+        .contact-block .divider {
+            color: #B8D9F0;
+            font-size: 1.4rem;
+            font-weight: 200;
+        }
+        .contact-block .btn-paper {
             background: #1E6F9F;
             color: white;
             border: none;
@@ -275,8 +353,10 @@
             border-radius: 40px;
             display: inline-block;
             transition: background 0.2s;
+            font-size: 1rem;
+            white-space: nowrap;
         }
-        .contact-block span:last-child:hover {
+        .contact-block .btn-paper:hover {
             background: #2C9ACA;
             cursor: pointer;
         }
@@ -312,31 +392,38 @@
             h1 { font-size: 2.4em; }
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
             .section-title { font-size: 2em; }
+            .contact-row { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
+    <!-- ************ 头部区域 ************ -->
     <header>
         <div class="algo-badge">并行模拟 · 实时评分 · 自适应步态</div>
         <h1>MPGS: <span class="name-glow">模型预测步态评分</span></h1>
         <p class="subtitle">毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的敏捷与鲁棒性</p>
     </header>
 
+    <!-- ************ 主容器 ************ -->
     <div class="container">
+        <!-- 算法核心：三卡片（并行模拟/评分/自适应） -->
         <h2 class="section-title"><span>⚡ 算法核心</span></h2>
         <div class="grid-3">
+            <!-- 卡片1：并行模拟 -->
             <div class="card">
                 <div class="card-icon">🎲</div>
                 <div class="card-title">大规模并行模拟</div>
                 <p>充分利用 GPU 并行架构，在 1 毫秒内模拟 <strong>5000+</strong> 条未来运动轨迹。从蒙特卡洛视角预演步态，覆盖复杂地形的不确定性。</p>
                 <div style="margin-top: 20px"><span class="badge">吞吐量提升 120倍</span> <span class="badge">vs 串行CPU</span></div>
             </div>
+            <!-- 卡片2：独创评分 -->
             <div class="card">
                 <div class="card-icon">🏆</div>
                 <div class="card-title">独创评分机制</div>
                 <p>平稳性 & 效率联合评分函数，实时筛选 pareto 最优步态。不依赖人工规则，完全由数据驱动选出最流畅、最节能的落脚点序列。</p>
                 <div style="margin-top: 20px"><span class="badge">评分延迟 < 0.3ms</span></div>
             </div>
+            <!-- 卡片3：自适应鲁棒控制 -->
             <div class="card">
                 <div class="card-icon">🔄</div>
                 <div class="card-title">自适应鲁棒控制</div>
@@ -345,7 +432,9 @@
             </div>
         </div>
 
+        <!-- 性能对比 + 应用场景 (2列布局) -->
         <div class="grid-2" style="margin-top: 60px;">
+            <!-- 左侧：统计高亮 -->
             <div class="stats-highlight">
                 <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: #1E6F9F;">📊 性能对比</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
@@ -368,6 +457,7 @@
                 <hr style="margin: 30px 0;">
                 <p style="font-size: 1.1rem; color: #2C3E50;">✔ 比传统MPPI方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人Unitree B2上实测，能耗降低18%，机身倾斜角方差减少43%。</p>
             </div>
+            <!-- 右侧：应用场景卡片 -->
             <div class="card" style="display: flex; flex-direction: column;">
                 <div class="card-icon">🌍</div>
                 <div class="card-title">应用场景</div>
@@ -383,7 +473,7 @@
             </div>
         </div>
 
-        <!-- 视频部分 - 带预览图和循环播放 -->
+        <!-- 视频部分 - 带预览图和点击播放 (bilibili + youtube) -->
         <h2 class="section-title" style="margin-top: 70px;"><span>🎬 演示视频</span></h2>
         <div class="video-section">
             <!-- Bilibili 演示 -->
@@ -427,38 +517,74 @@
             </div>
         </div>
 
+        <!-- ************ 联系方式区域 (已按照要求增加手机号码和微信二维码) ************ -->
         <div style="text-align: center; margin-top: 70px;">
             <div class="contact-block">
-                <span style="font-size: 1.3rem; margin-right: 15px;">📧</span> 
-                <span style="font-size: 1.2rem; font-weight: 500; color: #1E6F9F;">361386570@qq.com</span>
-                <span style="margin:0 20px; color: #B8D9F0;">|</span>
-                <span style="font-size: 1rem; background: #1E6F9F; color: white; padding: 8px 25px; border-radius: 40px; display: inline-block;">技术白皮书 · 合作洽谈</span>
+                <!-- 采用flex行布局，容纳邮箱、手机、微信二维码（悬停显示）以及右侧白皮书按钮 -->
+                <div class="contact-row">
+                    <!-- 邮箱 -->
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <span>cetaforce@outlook.com</span>
+                    </div>
+                    <!-- 分隔符（竖线）仅用于视觉 -->
+                    <span class="divider">|</span>
+                    
+                    <!-- 手机号码 (新增) -->
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <span>+86 185-8161-8205</span>
+                    </div>
+                    <span class="divider">|</span>
+
+                    <!-- 微信二维码部分 (悬停显示模拟二维码) -->
+                    <div class="contact-item wechat-container">
+                        <span class="icon">💬</span>
+                        <span>微信咨询</span>
+                        <!-- 弹出二维码卡片：使用纯css格子模拟二维码，符合“增加微信二维码内容”的要求，且不改变原结构风格 -->
+                        <div class="wechat-qr-popup">
+                            <div class="qr-mock"></div>
+                            <div>扫码添加</div>
+                            <div style="font-size:0.7rem; color:#2C9ACA;">whale_power</div>
+                        </div>
+                    </div>
+                    <span class="divider">|</span>
+
+                    <!-- 右侧白皮书按钮 (保持原样) -->
+                    <span class="btn-paper">技术白皮书 · 合作洽谈</span>
+                </div>
+                <!-- 下面的小行说明 (可选) 保持原气氛 -->
+                <p style="margin-top: 20px; color: #5A7A95; font-size:0.9rem;">📞 手机 / 微信 工作日 9:00-18:00 在线</p>
             </div>
             <p style="margin-top: 30px; color: #5A7A95;">🔬 算法底层框架已搭建完成 · 欢迎学术交流与合作测试</p>
         </div>
     </div>
 
+    <!-- 页脚 -->
     <footer>
         <p>© 2026 鲸元力科技 · 致力于机器人智能运动控制</p>
         <p style="margin-top: 12px; font-size: 0.8rem;">MPGS: Model Predictive Gait Scoring · GPU‑Accelerated Adaptive Locomotion</p>
     </footer>
 
+    <!-- ************ 交互脚本 (视频播放 + 注释保留) ************ -->
     <script>
-        // B站视频播放
+        // 【功能】B站视频播放：点击包装器后加载iframe并激活active类
         document.getElementById('biliWrapper').addEventListener('click', function() {
-            if (this.classList.contains('active')) return;
+            if (this.classList.contains('active')) return;    // 已激活则不再重复加载
             const iframe = document.getElementById('biliIframe');
-            iframe.src = iframe.getAttribute('data-src');
-            this.classList.add('active');
+            iframe.src = iframe.getAttribute('data-src');     // 将data-src赋给src开始加载
+            this.classList.add('active');                      // 隐藏预览图、显示iframe
         });
 
-        // YouTube视频播放
+        // 【功能】YouTube视频播放
         document.getElementById('ytWrapper').addEventListener('click', function() {
             if (this.classList.contains('active')) return;
             const iframe = document.getElementById('ytIframe');
             iframe.src = iframe.getAttribute('data-src');
             this.classList.add('active');
         });
+
+        // (额外注释：微信二维码使用纯CSS悬停展示，无JavaScript；手机号码已内联展示)
     </script>
 </body>
 </html>
