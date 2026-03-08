@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>鲸元力科技</title>
+    <title id="pageTitle">鲸元力科技</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLV32G6VYL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-QLV32G6VYL');
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -25,11 +24,55 @@
             /* 2. 网页背景色 (0,30,80) */
             background-color: rgb(0, 30, 80);
         }
-        /* ========== 头部渐变区域 ========== */
+        /* 阿拉伯语字体支持 */
+        body[lang="ar"] {
+            font-family: 'Segoe UI', 'Tahoma', 'Helvetica Neue', sans-serif;
+        }
+        /* ========== 语言切换器 ========== */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0, 52, 128, 0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            padding: 8px;
+            border: 1px solid rgb(64, 103, 160);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgb(231, 235, 242);
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .lang-btn:hover {
+            background: rgba(231, 235, 242, 0.1);
+        }
+        .lang-btn.active {
+            background: rgb(0, 94, 200);
+            border-color: rgb(64, 103, 160);
+        }
+        /* 阿拉伯语从右到左布局 */
+        body[lang="ar"] .container,
+        body[lang="ar"] header,
+        body[lang="ar"] .contact-row,
+        body[lang="ar"] .card,
+        body[lang="ar"] .grid-2,
+        body[lang="ar"] .grid-3 {
+            direction: rtl;
+        }
+        /* 头部渐变区域 */
         header {
-            /* 3. 最上方色块背景色 (0,52,128) — 使用纯色，可保留一点渐变层次但主色符合 */
             background: linear-gradient(135deg, rgb(0, 52, 128) 0%, rgb(0, 52, 128) 100%);
-            color: rgb(231, 235, 242);  /* 字体颜色统一 */
+            color: rgb(231, 235, 242);
             padding: 100px 20px;
             text-align: center;
             position: relative;
@@ -51,7 +94,7 @@
             font-weight: 700;
             letter-spacing: -0.02em;
             position: relative;
-            color: rgb(231, 235, 242); /* 强制标题颜色 */
+            color: rgb(231, 235, 242);
         }
         .subtitle {
             font-size: 1.3em;
@@ -64,14 +107,13 @@
         }
         .algo-badge {
             display: inline-block;
-            background: rgba(231, 235, 242, 0.2); /* 浅色透亮 */
+            background: rgba(231, 235, 242, 0.2);
             backdrop-filter: blur(8px);
             padding: 8px 18px;
             border-radius: 40px;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
             margin-bottom: 30px;
-            /* 4. 线条颜色 (64,103,160) 用于边框 */
             border: 1px solid rgb(64, 103, 160);
             color: rgb(231, 235, 242);
         }
@@ -85,7 +127,7 @@
             text-align: center;
             font-size: 2.4em;
             margin-bottom: 50px;
-            color: rgb(231, 235, 242);     /* 主标题字体颜色 */
+            color: rgb(231, 235, 242);
             font-weight: 600;
             letter-spacing: -0.01em;
         }
@@ -109,24 +151,22 @@
         }
         /* ========== 卡片样式 ========== */
         .card {
-            /* 5. 其它项目块背景色 (0,94,200) */
             background: rgb(0, 94, 200);
             border-radius: 24px;
             padding: 32px;
-            /* 4. 线条颜色 (64,103,160) 用于边框 */
             border: 1px solid rgb(64, 103, 160);
             transition: transform 0.2s, box-shadow 0.2s;
-            color: rgb(231, 235, 242);     /* 卡片内字体 */
+            color: rgb(231, 235, 242);
         }
         .card:hover {
             transform: translateY(-4px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border-color: rgb(110, 150, 210); /* 稍微亮一点但保留线条色系 */
+            border-color: rgb(110, 150, 210);
         }
         .card-icon {
             font-size: 2.2rem;
             margin-bottom: 20px;
-            color: rgb(231, 235, 242);     /* 图标颜色 */
+            color: rgb(231, 235, 242);
         }
         .card-title {
             font-size: 1.5rem;
@@ -135,7 +175,6 @@
             color: rgb(231, 235, 242);
         }
         .stats-highlight {
-            /* 统计高亮也用 (0,94,200) 但更深一点更协调？ 按指示「其它项目块背景色」保持一致 */
             background: rgb(0, 94, 200);
             padding: 30px;
             border-radius: 28px;
@@ -151,17 +190,17 @@
         .stat-number {
             font-size: 2.8rem;
             font-weight: 700;
-            color: rgb(231, 235, 242);     /* 数字保持字体色 */
+            color: rgb(231, 235, 242);
             line-height: 1.2;
         }
         .stat-label {
-            color: rgb(200, 215, 235);      /* 稍微浅一点的字体 */
+            color: rgb(200, 215, 235);
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.03em;
         }
         .badge {
-            background: rgba(231, 235, 242, 0.15); /* 浅色底 */
+            background: rgba(231, 235, 242, 0.15);
             color: rgb(231, 235, 242);
             padding: 4px 12px;
             border-radius: 30px;
@@ -180,7 +219,6 @@
         }
         .video-item {
             flex: 1 1 450px;
-            /* 视频块背景也统一为 (0,94,200) */
             background: rgb(0, 94, 200);
             border-radius: 28px;
             padding: 20px 20px 25px;
@@ -197,7 +235,7 @@
         .video-wrapper {
             position: relative;
             width: 100%;
-            background: rgb(0, 52, 128);    /* 与头部呼应，略深 */
+            background: rgb(0, 52, 128);
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
@@ -271,18 +309,9 @@
             font-weight: 300;
             opacity: 0.9;
         }
-        .tech-tag {
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            background: rgba(231, 235, 242, 0.1);
-            color: rgb(231, 235, 242);
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid rgb(64, 103, 160);
-        }
         /* ========== 联系方式区域 ========== */
         .contact-block {
-            background: rgb(0, 94, 200);      /* 统一项目块背景 */
+            background: rgb(0, 94, 200);
             border-radius: 50px;
             padding: 20px 40px;
             display: inline-block;
@@ -350,12 +379,12 @@
             color: rgb(231, 235, 242);
         }
         .contact-block .divider {
-            color: rgb(64, 103, 160);        /* 线条色 */
+            color: rgb(64, 103, 160);
             font-size: 1.4rem;
             font-weight: 200;
         }
         .contact-block .btn-paper {
-            background: rgb(0, 52, 128);      /* 深色按钮，与头部呼应 */
+            background: rgb(0, 52, 128);
             color: rgb(231, 235, 242);
             border: 1px solid rgb(64, 103, 160);
             padding: 8px 25px;
@@ -364,13 +393,13 @@
             transition: background 0.2s;
             font-size: 1rem;
             white-space: nowrap;
+            cursor: pointer;
         }
         .contact-block .btn-paper:hover {
             background: rgb(20, 82, 158);
-            cursor: pointer;
         }
         footer {
-            background: rgb(0, 52, 128);      /* 深色底部 */
+            background: rgb(0, 52, 128);
             color: rgb(200, 215, 235);
             text-align: center;
             padding: 40px 20px;
@@ -402,106 +431,110 @@
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
             .section-title { font-size: 2em; }
             .contact-row { flex-direction: column; gap: 15px; }
-        }
-        /* 微调部分文字对比度 */
-        .stats-highlight p, .stats-highlight div:not(.stat-number):not(.stat-label) {
-            color: rgb(231, 235, 242);
-        }
-        .card p, .card li, .stats-highlight li {
-            color: rgb(231, 235, 242);
-        }
-        ul li {
-            color: rgb(231, 235, 242);
+            .language-selector {
+                top: 10px;
+                right: 10px;
+                padding: 5px;
+            }
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
         }
         .badge + .badge {
             margin-left: 8px;
         }
-        .contact-block p {
-            color: rgb(231, 235, 242);
-        }
     </style>
 </head>
-<body>
+<body lang="zh">
+    <!-- 语言切换器 -->
+    <div class="language-selector">
+        <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+        <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" onclick="switchLanguage('de')">Deutsch</button>
+        <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+
     <!-- ************ 头部区域 ************ -->
     <header>
-        <div class="algo-badge">并行计算 · 实时评分 · 路经筛选</div>
-        <h1>P-MPC: <span class="name-glow">并行化模型预测控制</span></h1>
-        <p class="subtitle">毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的敏捷与鲁棒性</p>
+        <div class="algo-badge" data-i18n="header.badge">并行计算 · 实时评分 · 路经筛选</div>
+        <h1>P-MPC: <span class="name-glow" data-i18n="header.title">并行化模型预测控制</span></h1>
+        <p class="subtitle" data-i18n="header.subtitle">毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的敏捷与鲁棒性</p>
     </header>
 
     <!-- ************ 主容器 ************ -->
     <div class="container">
-        <!-- 算法核心：三卡片（并行模拟/评分/自适应） -->
-        <h2 class="section-title"><span>⚡ 算法核心</span></h2>
+        <!-- 算法核心：三卡片 -->
+        <h2 class="section-title"><span data-i18n="core.title">⚡ 算法核心</span></h2>
         <div class="grid-3">
             <div class="card">
                 <div class="card-icon">🎲</div>
-                <div class="card-title">大规模并行模拟</div>
-                <p>充分利用 GPU 并行架构，在 1 毫秒内模拟 <strong>5000+</strong> 条未来运动轨迹。从蒙特卡洛视角预演步态，覆盖复杂地形的不确定性。</p>
-                <div style="margin-top: 20px"><span class="badge">吞吐量提升 120倍</span> <span class="badge">vs 串行CPU</span></div>
+                <div class="card-title" data-i18n="core.card1.title">大规模并行模拟</div>
+                <p data-i18n="core.card1.desc">充分利用 GPU 并行架构，在 1 毫秒内模拟 <strong>5000+</strong> 条未来运动轨迹。从蒙特卡洛视角预演步态，覆盖复杂地形的不确定性。</p>
+                <div style="margin-top: 20px"><span class="badge" data-i18n="core.card1.badge1">吞吐量提升 120倍</span> <span class="badge" data-i18n="core.card1.badge2">vs 串行CPU</span></div>
             </div>
             <div class="card">
                 <div class="card-icon">🏆</div>
-                <div class="card-title">独创评分机制</div>
-                <p>平稳性 & 效率联合评分函数，实时筛选 pareto 最优步态。不依赖人工规则，完全由数据驱动选出最流畅、最节能的落脚点序列。</p>
-                <div style="margin-top: 20px"><span class="badge">评分延迟 < 0.3ms</span></div>
+                <div class="card-title" data-i18n="core.card2.title">独创评分机制</div>
+                <p data-i18n="core.card2.desc">平稳性 & 效率联合评分函数，实时筛选 pareto 最优步态。不依赖人工规则，完全由数据驱动选出最流畅、最节能的落脚点序列。</p>
+                <div style="margin-top: 20px"><span class="badge" data-i18n="core.card2.badge">评分延迟 < 0.3ms</span></div>
             </div>
             <div class="card">
                 <div class="card-icon">🔄</div>
-                <div class="card-title">自适应鲁棒控制</div>
-                <p>在乱石、斜坡、雪地等非结构化环境中，动态重规划步态。本体感知与轨迹评分闭环，机器人摔倒率降低 <strong>76%</strong> （20次试验）。</p>
-                <div style="margin-top: 20px"><span class="badge">未知环境泛化</span> <span class="badge">零样本迁移</span></div>
+                <div class="card-title" data-i18n="core.card3.title">自适应鲁棒控制</div>
+                <p data-i18n="core.card3.desc">在乱石、斜坡、雪地等非结构化环境中，动态重规划步态。本体感知与轨迹评分闭环，机器人摔倒率降低 <strong>76%</strong> （20次试验）。</p>
+                <div style="margin-top: 20px"><span class="badge" data-i18n="core.card3.badge1">未知环境泛化</span> <span class="badge" data-i18n="core.card3.badge2">零样本迁移</span></div>
             </div>
         </div>
 
-        <!-- 性能对比 + 应用场景 (2列布局) -->
+        <!-- 性能对比 + 应用场景 -->
         <div class="grid-2" style="margin-top: 60px;">
             <div class="stats-highlight">
-                <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: rgb(231, 235, 242);">📊 性能对比</h3>
+                <h3 style="font-size: 1.8rem; margin-bottom: 30px; color: rgb(231, 235, 242);" data-i18n="performance.title">📊 性能对比</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between;">
                     <div class="stat-item">
                         <div class="stat-number">0.8<span style="font-size:1.5rem;">ms</span></div>
-                        <div class="stat-label">单次规划延迟</div>
-                        <div style="margin-top: 8px; color: rgb(200, 215, 235);">▼ 62% vs MPC</div>
+                        <div class="stat-label" data-i18n="performance.metric1">单次规划延迟</div>
+                        <div style="margin-top: 8px; color: rgb(200, 215, 235);" data-i18n="performance.metric1.sub">▼ 62% vs MPC</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">5k</div>
-                        <div class="stat-label">并行轨迹数</div>
-                        <div style="margin-top: 8px; color: rgb(200, 215, 235);">GPU 原生加速</div>
+                        <div class="stat-label" data-i18n="performance.metric2">并行轨迹数</div>
+                        <div style="margin-top: 8px; color: rgb(200, 215, 235);" data-i18n="performance.metric2.sub">GPU 原生加速</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">94<span style="font-size:1.5rem;">%</span></div>
-                        <div class="stat-label">能耗平滑度</div>
-                        <div style="margin-top: 8px; color: rgb(200, 215, 235);">优于MPPI 21%</div>
+                        <div class="stat-label" data-i18n="performance.metric3">能耗平滑度</div>
+                        <div style="margin-top: 8px; color: rgb(200, 215, 235);" data-i18n="performance.metric3.sub">优于MPPI 21%</div>
                     </div>
                 </div>
                 <hr style="margin: 30px 0;">
-                <p style="font-size: 1.1rem; color: rgb(231, 235, 242);">✔ 比传统MPPI方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人Unitree B2上实测，能耗降低18%，机身倾斜角方差减少43%。</p>
+                <p style="font-size: 1.1rem; color: rgb(231, 235, 242);" data-i18n="performance.desc">✔ 比传统MPPI方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人Unitree B2上实测，能耗降低18%，机身倾斜角方差减少43%。</p>
             </div>
             <div class="card" style="display: flex; flex-direction: column;">
                 <div class="card-icon">🌍</div>
-                <div class="card-title">应用场景</div>
+                <div class="card-title" data-i18n="applications.title">应用场景</div>
                 <ul style="list-style-type: none; margin-top: 10px;">
-                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong>复杂地形勘探</strong> – 乱石堆、陡坡、废墟自适应行走，无需预先建模。</li>
-                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong>工业与搜救</strong> – 在湿滑、坍塌环境中保持稳定，支持动态负载。</li>
-                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong>敏捷机器人竞赛</strong> – 高速奔跑下实时步态切换，越障更流畅。</li>
-                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong>学术研究</strong> – 即插即用的GPU步态规划模块，支持二次开发。</li>
+                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item1.title">复杂地形勘探</strong><span data-i18n="applications.item1.desc"> – 乱石堆、陡坡、废墟自适应行走，无需预先建模。</span></li>
+                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item2.title">工业与搜救</strong><span data-i18n="applications.item2.desc"> – 在湿滑、坍塌环境中保持稳定，支持动态负载。</span></li>
+                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item3.title">敏捷机器人竞赛</strong><span data-i18n="applications.item3.desc"> – 高速奔跑下实时步态切换，越障更流畅。</span></li>
+                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item4.title">学术研究</strong><span data-i18n="applications.item4.desc"> – 即插即用的GPU步态规划模块，支持二次开发。</span></li>
                 </ul>
-                <div style="margin-top: auto; background: rgba(231, 235, 242, 0.1); border-radius: 30px; padding: 12px 20px; color: rgb(231, 235, 242); border: 1px solid rgb(64, 103, 160);">
+                <div style="margin-top: auto; background: rgba(231, 235, 242, 0.1); border-radius: 30px; padding: 12px 20px; color: rgb(231, 235, 242); border: 1px solid rgb(64, 103, 160);" data-i18n="applications.integration">
                     📌 已集成到 ROS 2 / Isaac Sim 生态
                 </div>
             </div>
         </div>
 
-        <!-- 视频部分 - 带预览图和点击播放 (bilibili + youtube) -->
-        <h2 class="section-title" style="margin-top: 70px;"><span>🎬 演示视频</span></h2>
+        <!-- 视频部分 -->
+        <h2 class="section-title" style="margin-top: 70px;"><span data-i18n="videos.title">🎬 演示视频</span></h2>
         <div class="video-section">
             <div class="video-item">
-                <h3>📺 Bilibili · 基本行走</h3>
+                <h3 data-i18n="videos.bilibili.title">📺 Bilibili · 基本行走</h3>
                 <div class="video-wrapper" id="biliWrapper" style="cursor: pointer;">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">🎥</div>
-                        <div class="thumbnail-text">Bilibili 演示视频<br>点击播放</div>
+                        <div class="thumbnail-text" data-i18n="videos.bilibili.thumbnail">Bilibili 演示视频<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
                     <iframe class="video-iframe" id="biliIframe" 
@@ -511,15 +544,15 @@
                             allow="autoplay; fullscreen">
                     </iframe>
                 </div>
-                <p style="margin-top: 15px; color: rgb(200, 215, 235);">基本行走。</p>
+                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.bilibili.caption">基本行走。</p>
             </div>
             
             <div class="video-item">
-                <h3>📺 YouTube · 基本行走</h3>
+                <h3 data-i18n="videos.youtube.title">📺 YouTube · 基本行走</h3>
                 <div class="video-wrapper" id="ytWrapper" style="cursor: pointer;">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">🎬</div>
-                        <div class="thumbnail-text">YouTube 演示视频<br>点击播放</div>
+                        <div class="thumbnail-text" data-i18n="videos.youtube.thumbnail">YouTube 演示视频<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
                     <iframe class="video-iframe" id="ytIframe" 
@@ -529,11 +562,11 @@
                             allow="autoplay; fullscreen">
                     </iframe>
                 </div>
-                <p style="margin-top: 15px; color: rgb(200, 215, 235);">基本行走</p>
+                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.youtube.caption">基本行走</p>
             </div>
         </div>
 
-        <!-- ************ 联系方式区域 (手机/微信二维码已保留) ************ -->
+        <!-- 联系方式区域 -->
         <div style="text-align: center; margin-top: 70px;">
             <div class="contact-block">
                 <div class="contact-row">
@@ -551,29 +584,30 @@
                 
                     <div class="contact-item wechat-container">
                         <span class="icon"><i class="fab fa-weixin"></i></span>
-                        <span>微信咨询</span>
+                        <span data-i18n="contact.wechat">微信咨询</span>
                         <div class="wechat-qr-popup">
                             <img src="image/QR_code_wechat.png" alt="微信二维码">
-                            <div>扫码添加</div>
+                            <div data-i18n="contact.qr.scan">扫码添加</div>
                             <div style="font-size:0.7rem; color:rgb(200,215,235);">ljy</div>
                         </div>
                     </div>
                     <span class="divider">|</span>
                 
-                    <span class="btn-paper">技术白皮书 · 合作洽谈</span>
+                    <span class="btn-paper" data-i18n="contact.paper">技术白皮书 · 合作洽谈</span>
                 </div>
-                <p style="margin-top: 20px; color: rgb(200, 215, 235); font-size:0.9rem;">📞 手机 / 微信 工作日 9:00-18:00 在线</p>
+                <p style="margin-top: 20px; color: rgb(200, 215, 235); font-size:0.9rem;" data-i18n="contact.hours">📞 手机 / 微信 工作日 9:00-18:00 在线</p>
             </div>
-            <p style="margin-top: 30px; color: rgb(200, 215, 235);">🔬 算法底层框架已搭建完成 · 欢迎学术交流与合作测试</p>
+            <p style="margin-top: 30px; color: rgb(200, 215, 235);" data-i18n="contact.footer">🔬 算法底层框架已搭建完成 · 承接机器人订制调试 · 欢迎学术交流与合作测试</p>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 鲸元力科技 · 致力于机器人智能运动控制</p>
-        <p style="margin-top: 12px; font-size: 0.8rem;">P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion</p>
+        <p data-i18n="footer.company">© 2026 鲸元力科技 · 致力于机器人智能运动控制</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;" data-i18n="footer.slogan">P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion</p>
     </footer>
 
     <script>
+        // 视频播放功能
         document.getElementById('biliWrapper').addEventListener('click', function() {
             if (this.classList.contains('active')) return;
             const iframe = document.getElementById('biliIframe');
@@ -586,6 +620,239 @@
             iframe.src = iframe.getAttribute('data-src');
             this.classList.add('active');
         });
+
+        // 多语言配置
+        const translations = {
+            zh: {
+                'header.badge': '并行计算 · 实时评分 · 路经筛选',
+                'header.title': '并行化模型预测控制',
+                'header.subtitle': '毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的敏捷与鲁棒性',
+                'core.title': '⚡ 算法核心',
+                'core.card1.title': '大规模并行模拟',
+                'core.card1.desc': '充分利用 GPU 并行架构，在 1 毫秒内模拟 <strong>5000+</strong> 条未来运动轨迹。从蒙特卡洛视角预演步态，覆盖复杂地形的不确定性。',
+                'core.card1.badge1': '吞吐量提升 120倍',
+                'core.card1.badge2': 'vs 串行CPU',
+                'core.card2.title': '独创评分机制',
+                'core.card2.desc': '平稳性 & 效率联合评分函数，实时筛选 pareto 最优步态。不依赖人工规则，完全由数据驱动选出最流畅、最节能的落脚点序列。',
+                'core.card2.badge': '评分延迟 < 0.3ms',
+                'core.card3.title': '自适应鲁棒控制',
+                'core.card3.desc': '在乱石、斜坡、雪地等非结构化环境中，动态重规划步态。本体感知与轨迹评分闭环，机器人摔倒率降低 <strong>76%</strong> （20次试验）。',
+                'core.card3.badge1': '未知环境泛化',
+                'core.card3.badge2': '零样本迁移',
+                'performance.title': '📊 性能对比',
+                'performance.metric1': '单次规划延迟',
+                'performance.metric1.sub': '▼ 62% vs MPC',
+                'performance.metric2': '并行轨迹数',
+                'performance.metric2.sub': 'GPU 原生加速',
+                'performance.metric3': '能耗平滑度',
+                'performance.metric3.sub': '优于MPPI 21%',
+                'performance.desc': '✔ 比传统MPPI方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人Unitree B2上实测，能耗降低18%，机身倾斜角方差减少43%。',
+                'applications.title': '应用场景',
+                'applications.item1.title': '复杂地形勘探',
+                'applications.item1.desc': ' – 乱石堆、陡坡、废墟自适应行走，无需预先建模。',
+                'applications.item2.title': '工业与搜救',
+                'applications.item2.desc': ' – 在湿滑、坍塌环境中保持稳定，支持动态负载。',
+                'applications.item3.title': '敏捷机器人竞赛',
+                'applications.item3.desc': ' – 高速奔跑下实时步态切换，越障更流畅。',
+                'applications.item4.title': '学术研究',
+                'applications.item4.desc': ' – 即插即用的GPU步态规划模块，支持二次开发。',
+                'applications.integration': '📌 已集成到 ROS 2 / Isaac Sim 生态',
+                'videos.title': '🎬 演示视频',
+                'videos.bilibili.title': '📺 Bilibili · 基本行走',
+                'videos.bilibili.thumbnail': 'Bilibili 演示视频<br>点击播放',
+                'videos.bilibili.caption': '基本行走。',
+                'videos.youtube.title': '📺 YouTube · 基本行走',
+                'videos.youtube.thumbnail': 'YouTube 演示视频<br>点击播放',
+                'videos.youtube.caption': '基本行走',
+                'contact.wechat': '微信咨询',
+                'contact.qr.scan': '扫码添加',
+                'contact.paper': '技术白皮书 · 合作洽谈',
+                'contact.hours': '📞 手机 / 微信 工作日 9:00-18:00 在线',
+                'contact.footer': '🔬 算法底层框架已搭建完成 · 承接机器人订制调试 · 欢迎学术交流与合作测试',
+                'footer.company': '© 2026 鲸元力科技 · 致力于机器人智能运动控制',
+                'footer.slogan': 'P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion'
+            },
+            en: {
+                'header.badge': 'Parallel Computing · Real-time Scoring · Path Selection',
+                'header.title': 'Parallelized Model Predictive Control',
+                'header.subtitle': 'Simulate thousands of trajectories in milliseconds, select optimal gaits in real-time, endowing quadruped robots with unprecedented agility and robustness',
+                'core.title': '⚡ Core Algorithm',
+                'core.card1.title': 'Massive Parallel Simulation',
+                'core.card1.desc': 'Leveraging GPU parallel architecture to simulate <strong>5000+</strong> future motion trajectories within 1ms. Preview gaits from Monte Carlo perspective, covering uncertainties in complex terrain.',
+                'core.card1.badge1': '120x Throughput',
+                'core.card1.badge2': 'vs Serial CPU',
+                'core.card2.title': 'Innovative Scoring',
+                'core.card2.desc': 'Joint scoring function for stability & efficiency, real-time Pareto optimal gait selection. Data-driven selection of smoothest, most energy-efficient foothold sequences.',
+                'core.card2.badge': '< 0.3ms latency',
+                'core.card3.title': 'Adaptive Robust Control',
+                'core.card3.desc': 'Dynamic gait replanning in unstructured environments like rocks, slopes, snow. Proprioception & trajectory scoring闭环, <strong>76%</strong> reduction in fall rate (20 trials).',
+                'core.card3.badge1': 'Unknown Environment',
+                'core.card3.badge2': 'Zero-shot Transfer',
+                'performance.title': '📊 Performance',
+                'performance.metric1': 'Planning Latency',
+                'performance.metric1.sub': '▼ 62% vs MPC',
+                'performance.metric2': 'Parallel Trajectories',
+                'performance.metric2.sub': 'GPU Accelerated',
+                'performance.metric3': 'Energy Smoothness',
+                'performance.metric3.sub': '21% better than MPPI',
+                'performance.desc': '✔ 6x computational efficiency vs traditional MPPI, 1/3 parameters.<br>✔ 18% energy reduction, 43% less body tilt variance on Unitree B2.',
+                'applications.title': 'Applications',
+                'applications.item1.title': 'Terrain Exploration',
+                'applications.item1.desc': ' – Adaptive walking on rocks, slopes, ruins. No pre-modeling required.',
+                'applications.item2.title': 'Industrial & Rescue',
+                'applications.item2.desc': ' – Stable on slippery, collapsed surfaces. Supports dynamic loads.',
+                'applications.item3.title': 'Robotics Competition',
+                'applications.item3.desc': ' – Real-time gait switching at high speeds, smoother obstacle crossing.',
+                'applications.item4.title': 'Research',
+                'applications.item4.desc': ' – Plug-and-play GPU gait planning module for二次开发.',
+                'applications.integration': '📌 Integrated with ROS 2 / Isaac Sim',
+                'videos.title': '🎬 Demo Videos',
+                'videos.bilibili.title': '📺 Bilibili · Basic Walking',
+                'videos.bilibili.thumbnail': 'Bilibili Demo<br>Click to Play',
+                'videos.bilibili.caption': 'Basic walking.',
+                'videos.youtube.title': '📺 YouTube · Basic Walking',
+                'videos.youtube.thumbnail': 'YouTube Demo<br>Click to Play',
+                'videos.youtube.caption': 'Basic walking',
+                'contact.wechat': 'WeChat',
+                'contact.qr.scan': 'Scan QR',
+                'contact.paper': 'Whitepaper · Partnership',
+                'contact.hours': '📞 Phone/WeChat Weekdays 9:00-18:00',
+                'contact.footer': '🔬 Core algorithm ready · Custom robotics调试 · Academic cooperation welcome',
+                'footer.company': '© 2026 WhaleForce Tech · Intelligent Robot Motion Control',
+                'footer.slogan': 'P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion'
+            },
+            de: {
+                'header.badge': 'Parallel Computing · Echtzeit-Bewertung · Pfadauswahl',
+                'header.title': 'Parallelisierte Modellprädiktive Regelung',
+                'header.subtitle': 'Simulation tausender Trajektorien in Millisekunden, Echtzeit-Gangauswahl für beispiellose Beweglichkeit und Robustheit von vierbeinigen Robotern',
+                'core.title': '⚡ Kernalgorithmus',
+                'core.card1.title': 'Massive Parallelsimulation',
+                'core.card1.desc': 'Nutzung der GPU-Parallelarchitektur zur Simulation von <strong>5000+</strong> Bewegungstrajektorien innerhalb 1ms. Gangvorausschau aus Monte-Carlo-Perspektive.',
+                'core.card1.badge1': '120x Durchsatz',
+                'core.card1.badge2': 'vs Serielle CPU',
+                'core.card2.title': 'Innovative Bewertung',
+                'core.card2.desc': 'Kombinierte Bewertung von Stabilität & Effizienz, Pareto-optimale Gangauswahl in Echtzeit. Datengesteuerte Auswahl von flüssigsten und energieeffizientesten Fußpunktsequenzen.',
+                'core.card2.badge': '< 0,3ms Latenz',
+                'core.card3.title': 'Adaptive Robuste Regelung',
+                'core.card3.desc': 'Dynamische Gangumplanung in unstrukturierten Umgebungen wie Felsen, Hängen, Schnee. Propriozeption & Trajektorienbewertung, <strong>76%</strong> weniger Stürze (20 Versuche).',
+                'core.card3.badge1': 'Unbekannte Umgebung',
+                'core.card3.badge2': 'Zero-shot Transfer',
+                'performance.title': '📊 Leistung',
+                'performance.metric1': 'Planungslatenz',
+                'performance.metric1.sub': '▼ 62% vs MPC',
+                'performance.metric2': 'Parallele Trajektorien',
+                'performance.metric2.sub': 'GPU Beschleunigt',
+                'performance.metric3': 'Energieglätte',
+                'performance.metric3.sub': '21% besser als MPPI',
+                'performance.desc': '✔ 6x Effizienz vs MPPI, 1/3 Parameter.<br>✔ 18% Energieeinsparung, 43% weniger Körperschwankung auf Unitree B2.',
+                'applications.title': 'Anwendungen',
+                'applications.item1.title': 'Geländeerforschung',
+                'applications.item1.desc': ' – Adaptives Laufen auf Felsen, Hängen, Ruinen. Keine Vormodellierung nötig.',
+                'applications.item2.title': 'Industrie & Rettung',
+                'applications.item2.desc': ' – Stabil auf rutschigen, eingestürzten Oberflächen. Unterstützt dynamische Lasten.',
+                'applications.item3.title': 'Roboterwettbewerbe',
+                'applications.item3.desc': ' – Echtzeit-Gangwechsel bei hohen Geschwindigkeiten, flüssigeres Überwinden von Hindernissen.',
+                'applications.item4.title': 'Forschung',
+                'applications.item4.desc': ' – Plug-and-play GPU-Gangplanungsmodul für Weiterentwicklung.',
+                'applications.integration': '📌 Integriert mit ROS 2 / Isaac Sim',
+                'videos.title': '🎬 Demovideos',
+                'videos.bilibili.title': '📺 Bilibili · Basisgang',
+                'videos.bilibili.thumbnail': 'Bilibili Demo<br>Zum Abspielen klicken',
+                'videos.bilibili.caption': 'Basisgang.',
+                'videos.youtube.title': '📺 YouTube · Basisgang',
+                'videos.youtube.thumbnail': 'YouTube Demo<br>Zum Abspielen klicken',
+                'videos.youtube.caption': 'Basisgang',
+                'contact.wechat': 'WeChat',
+                'contact.qr.scan': 'QR scannen',
+                'contact.paper': 'Whitepaper · Kooperation',
+                'contact.hours': '📞 Telefon/WeChat Werktags 9-18 Uhr',
+                'contact.footer': '🔬 Kernalgorithmus bereit · Kundenspezifische Roboterentwicklung · Akademische Kooperation willkommen',
+                'footer.company': '© 2026 WhaleForce Tech · Intelligente Roboterbewegungssteuerung',
+                'footer.slogan': 'P-MPC: Parallelisierte Modellprädiktive Regelung · GPU-beschleunigte adaptive Fortbewegung'
+            },
+            ar: {
+                'header.badge': 'حوسبة متوازية · تقييم فوري · اختيار المسار',
+                'header.title': 'التحكم التنبؤي بالنموذج المتوازي',
+                'header.subtitle': 'محاكاة آلاف المسارات خلال ملي ثانية، اختيار أنماط المشي المثلى في الوقت الفعلي، مما يمنح الروبوتات الرباعية خفة وثبات غير مسبوقين',
+                'core.title': '⚡ الخوارزمية الأساسية',
+                'core.card1.title': 'محاكاة متوازية واسعة النطاق',
+                'core.card1.desc': 'استخدام بنية GPU المتوازية لمحاكاة <strong>5000+</strong> مسار حركة مستقبلي خلال 1 ملي ثانية. معاينة أنماط المشي من منظور مونت كارلو، وتغطية عدم اليقين في التضاريس المعقدة.',
+                'core.card1.badge1': '120x إنتاجية',
+                'core.card1.badge2': 'مقارنة بوحدة CPU التسلسلية',
+                'core.card2.title': 'آلية تقييم مبتكرة',
+                'core.card2.desc': 'وظيفة تقييم مشتركة للثبات والكفاءة، اختيار فوري لأنماط المشي المثلى. اختيار مدفوع بالبيانات لأكثر تسلسلات نقاط الارتكاز سلاسة وكفاءة في استهلاك الطاقة.',
+                'core.card2.badge': '< 0.3ms زمن استجابة',
+                'core.card3.title': 'تحكم متكيف قوي',
+                'core.card3.desc': 'إعادة تخطيط ديناميكي للمشي في بيئات غير منظمة مثل الصخور والمنحدرات والثلوج. استقبال حسي مع تقييم المسار، تقليل معدل السقوط بنسبة <strong>76%</strong> (20 تجربة).',
+                'core.card3.badge1': 'تعميم البيئة غير المعروفة',
+                'core.card3.badge2': 'نقل بدون عينات',
+                'performance.title': '📊 مقارنة الأداء',
+                'performance.metric1': 'زمن استجابة التخطيط',
+                'performance.metric1.sub': '▼ 62% مقابل MPC',
+                'performance.metric2': 'عدد المسارات المتوازية',
+                'performance.metric2.sub': 'تسريع GPU أصلي',
+                'performance.metric3': 'سلاسة الطاقة',
+                'performance.metric3.sub': 'أفضل من MPPI بنسبة 21%',
+                'performance.desc': '✔ كفاءة حسابية 6 أضعاف مقارنة بطريقة MPPI التقليدية، ثلث المعاملات.<br>✔ على روبوت Unitree B2، تقليل الطاقة 18%، تقليل تباين ميل الهيكل 43%.',
+                'applications.title': 'سيناريوهات التطبيق',
+                'applications.item1.title': 'استكشاف التضاريس المعقدة',
+                'applications.item1.desc': ' – مشي تكيفي على الصخور والمنحدرات والأنقاض، بدون نمذجة مسبقة.',
+                'applications.item2.title': 'الصناعة والإنقاذ',
+                'applications.item2.desc': ' – ثبات في البيئات الزلقة والمنهارة، دعم الأحمال الديناميكية.',
+                'applications.item3.title': 'مسابقات الروبوتات',
+                'applications.item3.desc': ' – تبديل أنماط المشي في الوقت الفعلي أثناء الجري عالي السرعة، عبور أكثر سلاسة للعقبات.',
+                'applications.item4.title': 'البحث الأكاديمي',
+                'applications.item4.desc': ' – وحدة تخطيط مشي GPU قابلة للتوصيل والتشغيل، تدعم التطوير الثانوي.',
+                'applications.integration': '📌 مدمج مع ROS 2 / Isaac Sim',
+                'videos.title': '🎬 فيديوهات العرض',
+                'videos.bilibili.title': '📺 Bilibili · المشي الأساسي',
+                'videos.bilibili.thumbnail': 'عرض Bilibili<br>اضغط للتشغيل',
+                'videos.bilibili.caption': 'المشي الأساسي.',
+                'videos.youtube.title': '📺 YouTube · المشي الأساسي',
+                'videos.youtube.thumbnail': 'عرض YouTube<br>اضغط للتشغيل',
+                'videos.youtube.caption': 'المشي الأساسي',
+                'contact.wechat': 'استشارة WeChat',
+                'contact.qr.scan': 'امسح الرمز',
+                'contact.paper': 'ورقة تقنية · تعاون',
+                'contact.hours': '📞 هاتف / WeChat أيام العمل 9:00-18:00',
+                'contact.footer': '🔬 الإطار الأساسي للخوارزمية مكتمل · استقبال تخصيص الروبوتات · مرحب بالتبادل الأكاديمي واختبارات التعاون',
+                'footer.company': '© 2026 تقنية WhaleForce · ملتزمون بالتحكم الذكي في حركة الروبوتات',
+                'footer.slogan': 'P-MPC: التحكم التنبؤي بالنموذج المتوازي · حركة تكيفية مسرعة بوحدة GPU'
+            }
+        };
+
+        function switchLanguage(lang) {
+            // 更新 body 的语言属性
+            document.body.setAttribute('lang', lang);
+            
+            // 更新所有带 data-i18n 属性的元素
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // 更新页面标题
+            const titleMap = {
+                'zh': '鲸元力科技',
+                'en': 'WhaleForce Tech',
+                'de': 'WhaleForce Technologie',
+                'ar': 'تقنية WhaleForce'
+            };
+            document.getElementById('pageTitle').textContent = titleMap[lang] || titleMap.zh;
+
+            // 更新语言按钮的激活状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // 初始化语言为中文
+        window.onload = function() {
+            switchLanguage('zh');
+        };
     </script>
 </body>
 </html>
