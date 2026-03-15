@@ -638,6 +638,45 @@
             </div>
         </div>
 
+        <!-- 新增：两个新视频嵌入（与原有视频保持一致样式） -->
+        <div class="video-section" style="margin-top: 0;">
+            <div class="video-item">
+                <h3 data-i18n="videos.new1.title">📺 Bilibili · 稀疏地形鲁棒性</h3>
+                <div class="video-wrapper" id="newBiliWrapper" style="cursor: pointer;">
+                    <div class="video-thumbnail custom-thumbnail">
+                        <div class="thumbnail-icon">🌄</div>
+                        <div class="thumbnail-text" data-i18n="videos.new1.thumbnail">稀疏地形演示<br>点击播放</div>
+                    </div>
+                    <div class="play-button">▶</div>
+                    <iframe class="video-iframe" id="newBiliIframe" 
+                            src=""
+                            data-src="//player.bilibili.com/player.html?isOutside=true&aid=116231461935223&bvid=BV1SvwNzDEb1&cid=36710190766&p=1&autoplay=1&high_quality=1&danmaku=0&loop=1"
+                            allowfullscreen="true" 
+                            allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.new1.caption">在稀疏地形上的鲁棒性行走，基于模型的P-MPC算法，无需训练。</p>
+            </div>
+            
+            <div class="video-item">
+                <h3 data-i18n="videos.new2.title">📺 YouTube · 稀疏地形鲁棒性</h3>
+                <div class="video-wrapper" id="newYtWrapper" style="cursor: pointer;">
+                    <div class="video-thumbnail custom-thumbnail">
+                        <div class="thumbnail-icon">⛰️</div>
+                        <div class="thumbnail-text" data-i18n="videos.new2.thumbnail">稀疏地形演示<br>点击播放</div>
+                    </div>
+                    <div class="play-button">▶</div>
+                    <iframe class="video-iframe" id="newYtIframe" 
+                            src=""
+                            data-src="https://www.youtube.com/embed/Inn6M5r_ROc?si=p9FdkseG7BEoDOog&autoplay=1&mute=0&modestbranding=1&rel=0&loop=1&playlist=Inn6M5r_ROc"
+                            allowfullscreen="true"
+                            allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.new2.caption">鲁棒的稀疏地形行走演示，基于模型的并行化模型预测控制。</p>
+            </div>
+        </div>
+
         <!-- ========== 新增：更多视频区域 (与上面两个视频等大、独立) ========== -->
         <div class="more-video-section">
             <div class="more-video-item">
@@ -692,7 +731,7 @@
     </footer>
 
     <script>
-        // 视频播放功能
+        // 视频播放功能（原有两个视频）
         document.getElementById('biliWrapper').addEventListener('click', function() {
             if (this.classList.contains('active')) return;
             const iframe = document.getElementById('biliIframe');
@@ -706,7 +745,21 @@
             this.classList.add('active');
         });
 
-        // 多语言配置 (增加了 moreVideos 相关条目)
+        // 新增视频播放功能
+        document.getElementById('newBiliWrapper').addEventListener('click', function() {
+            if (this.classList.contains('active')) return;
+            const iframe = document.getElementById('newBiliIframe');
+            iframe.src = iframe.getAttribute('data-src');
+            this.classList.add('active');
+        });
+        document.getElementById('newYtWrapper').addEventListener('click', function() {
+            if (this.classList.contains('active')) return;
+            const iframe = document.getElementById('newYtIframe');
+            iframe.src = iframe.getAttribute('data-src');
+            this.classList.add('active');
+        });
+
+        // 多语言配置 (增加了 moreVideos 和 new videos 相关条目)
         const translations = {
             zh: {
                 'header.badge': '并行计算 · 实时评分 · 路经筛选',
@@ -749,6 +802,12 @@
                 'videos.youtube.title': '📺 YouTube · 基本行走',
                 'videos.youtube.thumbnail': 'YouTube 演示视频<br>点击播放',
                 'videos.youtube.caption': '基本行走',
+                'videos.new1.title': '📺 Bilibili · 稀疏地形鲁棒性',
+                'videos.new1.thumbnail': '稀疏地形演示<br>点击播放',
+                'videos.new1.caption': '在稀疏地形上的鲁棒性行走，基于模型的P-MPC算法，无需训练。',
+                'videos.new2.title': '📺 YouTube · 稀疏地形鲁棒性',
+                'videos.new2.thumbnail': '稀疏地形演示<br>点击播放',
+                'videos.new2.caption': '鲁棒的稀疏地形行走演示，基于模型的并行化模型预测控制。',
                 'moreVideos.title': '📌 更多内容',
                 'moreVideos.mainTitle': '敬请期待',
                 'moreVideos.desc': '更多精彩演示视频即将上线，包括复杂地形、高速奔跑、负重测试等场景，持续更新中……',
@@ -801,6 +860,12 @@
                 'videos.youtube.title': '📺 YouTube · Basic Walking',
                 'videos.youtube.thumbnail': 'YouTube Demo<br>Click to Play',
                 'videos.youtube.caption': 'Basic walking',
+                'videos.new1.title': '📺 Bilibili · Sparse Terrain Robustness',
+                'videos.new1.thumbnail': 'Sparse Terrain Demo<br>Click to Play',
+                'videos.new1.caption': 'Robust walking on sparse terrain, model-based P-MPC algorithm, no training required.',
+                'videos.new2.title': '📺 YouTube · Sparse Terrain Robustness',
+                'videos.new2.thumbnail': 'Sparse Terrain Demo<br>Click to Play',
+                'videos.new2.caption': 'Robust sparse terrain walking demo, model-based parallelized model predictive control.',
                 'moreVideos.title': '📌 More Content',
                 'moreVideos.mainTitle': 'Coming Soon',
                 'moreVideos.desc': 'More exciting demo videos are coming soon, including complex terrain, high-speed running, load testing scenarios, constantly updated...',
@@ -808,7 +873,7 @@
                 'contact.qr.scan': 'Scan QR',
                 'contact.paper': 'Whitepaper · Partnership',
                 'contact.hours': '📞 Phone/WeChat Weekdays 9:00-18:00',
-                'contact.footer': '🔬 Core algorithm ready · Custom robotics调试 · Academic cooperation welcome',
+                'contact.footer': '🔬 Core algorithm ready · Custom robotics debugging · Academic cooperation welcome',
                 'footer.company': '© 2026 Cetaforce Tech · Intelligent Robot Motion Control',
                 'footer.slogan': 'P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion'
             },
@@ -853,6 +918,12 @@
                 'videos.youtube.title': '📺 YouTube · Basisgang',
                 'videos.youtube.thumbnail': 'YouTube Demo<br>Zum Abspielen klicken',
                 'videos.youtube.caption': 'Basisgang',
+                'videos.new1.title': '📺 Bilibili · Robustheit auf spärlichem Gelände',
+                'videos.new1.thumbnail': 'Spärliches Gelände Demo<br>Zum Abspielen klicken',
+                'videos.new1.caption': 'Robustes Laufen auf spärlichem Gelände, modellbasierter P-MPC-Algorithmus, kein Training erforderlich.',
+                'videos.new2.title': '📺 YouTube · Robustheit auf spärlichem Gelände',
+                'videos.new2.thumbnail': 'Spärliches Gelände Demo<br>Zum Abspielen klicken',
+                'videos.new2.caption': 'Robuste Demonstration des Gehens auf spärlichem Gelände, modellbasierte parallelisierte modellprädiktive Regelung.',
                 'moreVideos.title': '📌 Mehr Inhalte',
                 'moreVideos.mainTitle': 'Demnächst',
                 'moreVideos.desc': 'Weitere spannende Demovideos folgen in Kürze, darunter Szenarien mit komplexem Gelände, Hochgeschwindigkeitsläufen und Belastungstests – ständig aktualisiert...',
@@ -905,6 +976,12 @@
                 'videos.youtube.title': '📺 YouTube · المشي الأساسي',
                 'videos.youtube.thumbnail': 'عرض YouTube<br>اضغط للتشغيل',
                 'videos.youtube.caption': 'المشي الأساسي',
+                'videos.new1.title': '📺 Bilibili · المتانة على التضاريس المتناثرة',
+                'videos.new1.thumbnail': 'عرض التضاريس المتناثرة<br>اضغط للتشغيل',
+                'videos.new1.caption': 'مشي قوي على التضاريس المتناثرة، خوارزمية P-MPC القائمة على النموذج، بدون تدريب.',
+                'videos.new2.title': '📺 YouTube · المتانة على التضاريس المتناثرة',
+                'videos.new2.thumbnail': 'عرض التضاريس المتناثرة<br>اضغط للتشغيل',
+                'videos.new2.caption': 'عرض توضيحي للمشي القوي على التضاريس المتناثرة، تحكم تنبؤي نموذجي متوازي قائم على النموذج.',
                 'moreVideos.title': '📌 المزيد من المحتوى',
                 'moreVideos.mainTitle': 'قريباً',
                 'moreVideos.desc': 'المزيد من فيديوهات العرض المثيرة قادمة قريباً، بما في ذلك التضاريس المعقدة، الجري عالي السرعة، اختبارات الأحمال، تحديثات مستمرة...',
