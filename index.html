@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">鲸元力科技</title>
+    <title id="pageTitle">鲸元力科技 Cetaforce</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QLV32G6VYL"></script>
     <script>
@@ -13,21 +13,28 @@
       gtag('config', 'G-QLV32G6VYL');
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 多语言字体，确保阿拉伯语/德语/英语均可正常显示 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* ========== 全局重置与字体 ========== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            /* 1. 字体颜色 (231,235,242) */
             color: rgb(231, 235, 242);
-            /* 2. 网页背景色 (0,30,80) */
             background-color: rgb(0, 30, 80);
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        /* 阿拉伯语字体支持 */
         body[lang="ar"] {
-            font-family: 'Segoe UI', 'Tahoma', 'Helvetica Neue', sans-serif;
+            font-family: 'Noto Sans Arabic', 'Noto Kufi Arabic', 'Tahoma', 'Segoe UI', sans-serif;
+            direction: rtl;
         }
+
         /* ========== 语言切换器 ========== */
         .language-selector {
             position: fixed;
@@ -53,27 +60,39 @@
             transition: all 0.2s;
             border: 1px solid transparent;
         }
-        .lang-btn:hover {
-            background: rgba(231, 235, 242, 0.1);
-        }
+        .lang-btn:hover { background: rgba(231, 235, 242, 0.1); }
         .lang-btn.active {
             background: rgb(0, 94, 200);
             border-color: rgb(64, 103, 160);
         }
+
         /* 阿拉伯语从右到左布局 */
         body[lang="ar"] .container,
         body[lang="ar"] header,
         body[lang="ar"] .contact-row,
         body[lang="ar"] .card,
         body[lang="ar"] .grid-2,
-        body[lang="ar"] .grid-3 {
+        body[lang="ar"] .grid-3,
+        body[lang="ar"] .video-section,
+        body[lang="ar"] .more-video-section {
             direction: rtl;
         }
+        body[lang="ar"] .brand-line {
+            left: 28px;
+            right: auto;
+            text-align: left;
+        }
+        body[lang="ar"] .video-item h3,
+        body[lang="ar"] .more-video-item h3 {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+
         /* 头部渐变区域 */
         header {
             background: linear-gradient(135deg, rgb(0, 52, 128) 0%, rgb(0, 52, 128) 100%);
             color: rgb(231, 235, 242);
-            padding: 100px 20px;
+            padding: 130px 20px 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -81,12 +100,48 @@
         header::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: radial-gradient(circle at 30% 50%, rgba(231, 235, 242, 0.15) 0%, transparent 60%);
             pointer-events: none;
+        }
+        .brand-line {
+            position: absolute;
+            top: 26px;
+            left: 30px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            backdrop-filter: none;
+            color: rgb(231, 235, 242);
+            line-height: 0.95;
+            box-shadow: none;
+            text-align: left;
+        }
+        .brand-line strong {
+            display: block;
+            font-size: 5.15rem;
+            font-weight: 900;
+            letter-spacing: 0.01em;
+            color: rgb(231, 235, 242);
+            text-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+        }
+        .brand-line span {
+            display: block;
+            margin-top: 2px;
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgb(200, 215, 235);
+            letter-spacing: 0.36em;
+            text-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
+            text-transform: uppercase;
+            white-space: nowrap;
         }
         h1 {
             font-size: 3.5em;
@@ -95,15 +150,17 @@
             letter-spacing: -0.02em;
             position: relative;
             color: rgb(231, 235, 242);
+            z-index: 1;
         }
         .subtitle {
             font-size: 1.3em;
             opacity: 0.95;
-            max-width: 700px;
+            max-width: 820px;
             margin: 0 auto;
             position: relative;
             font-weight: 300;
             color: rgb(231, 235, 242);
+            z-index: 1;
         }
         .algo-badge {
             display: inline-block;
@@ -113,10 +170,13 @@
             border-radius: 40px;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
-            margin-bottom: 30px;
+            margin-bottom: 18px;
             border: 1px solid rgb(64, 103, 160);
             color: rgb(231, 235, 242);
+            position: relative;
+            z-index: 1;
         }
+
         /* ========== 主要内容容器 ========== */
         .container {
             max-width: 1200px;
@@ -135,7 +195,9 @@
             background: linear-gradient(135deg, rgb(231, 235, 242), rgb(170, 200, 240));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+
         /* ========== 网格布局 ========== */
         .grid-2 {
             display: grid;
@@ -149,6 +211,7 @@
             gap: 25px;
             margin-top: 30px;
         }
+
         /* ========== 卡片样式 ========== */
         .card {
             background: rgb(0, 94, 200);
@@ -209,6 +272,9 @@
             display: inline-block;
             border: 1px solid rgb(64, 103, 160);
         }
+        .badge + .badge { margin-left: 8px; }
+        body[lang="ar"] .badge + .badge { margin-left: 0; margin-right: 8px; }
+
         /* ========== 视频区块 ========== */
         .video-section {
             display: flex;
@@ -278,15 +344,10 @@
             height: 100%;
             border: none;
         }
-        .video-wrapper.active .video-thumbnail {
-            display: none;
-        }
-        .video-wrapper.active .video-iframe {
-            display: block;
-        }
-        .video-wrapper.active .play-button {
-            display: none;
-        }
+        .video-wrapper.active .video-thumbnail { display: none; }
+        .video-wrapper.active .video-iframe { display: block; }
+        .video-wrapper.active .play-button { display: none; }
+
         .custom-thumbnail {
             width: 100%;
             height: 100%;
@@ -310,16 +371,15 @@
             opacity: 0.9;
         }
 
-      
         .more-video-section {
             display: flex;
             gap: 30px;
             flex-wrap: wrap;
             justify-content: center;
-            margin: 0 0 40px;  /* 与上方视频区形成自然间距 */
+            margin: 0 0 40px;
         }
         .more-video-item {
-            flex: 1 1 450px;            /* 与.video-item完全一致 */
+            flex: 1 1 450px;
             background: rgb(0, 94, 200);
             border-radius: 28px;
             padding: 20px 20px 25px;
@@ -352,7 +412,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 200px; /* 与视频区域高度协调 */
+            min-height: 200px;
         }
         .more-icon {
             font-size: 4rem;
@@ -367,6 +427,7 @@
             background: linear-gradient(135deg, rgb(231, 235, 242), rgb(170, 200, 240));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .more-desc {
             font-size: 1.1rem;
@@ -374,7 +435,6 @@
             max-width: 300px;
             margin: 0 auto;
         }
-        /* 阿拉伯语下保持美观 */
         body[lang="ar"] .more-title,
         body[lang="ar"] .more-desc {
             direction: rtl;
@@ -409,9 +469,7 @@
             border-radius: 40px;
             border: 1px solid rgb(64, 103, 160);
         }
-        .contact-item .icon {
-            font-size: 1.5rem;
-        }
+        .contact-item .icon { font-size: 1.5rem; }
         .wechat-container {
             position: relative;
             display: inline-flex;
@@ -446,9 +504,7 @@
             border: 2px solid rgb(64, 103, 160);
             display: block;
         }
-        .wechat-qr-popup div {
-            color: rgb(231, 235, 242);
-        }
+        .wechat-qr-popup div { color: rgb(231, 235, 242); }
         .contact-block .divider {
             color: rgb(64, 103, 160);
             font-size: 1.4rem;
@@ -466,9 +522,8 @@
             white-space: nowrap;
             cursor: pointer;
         }
-        .contact-block .btn-paper:hover {
-            background: rgb(20, 82, 158);
-        }
+        .contact-block .btn-paper:hover { background: rgb(20, 82, 158); }
+
         footer {
             background: rgb(0, 52, 128);
             color: rgb(200, 215, 235);
@@ -488,15 +543,15 @@
             background: linear-gradient(145deg, rgb(231, 235, 242), rgb(170, 200, 240));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 700;
         }
         a {
             color: rgb(231, 235, 242);
             text-decoration: none;
         }
-        a:hover {
-            color: rgb(200, 215, 235);
-        }
+        a:hover { color: rgb(200, 215, 235); }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.4em; }
             .grid-2, .grid-3 { grid-template-columns: 1fr; }
@@ -511,10 +566,20 @@
                 padding: 5px 10px;
                 font-size: 0.8rem;
             }
+            .brand-line {
+                top: 52px;
+                left: 16px;
+                right: auto;
+                gap: 4px;
+            }
+            body[lang="ar"] .brand-line {
+                left: 16px;
+                right: auto;
+            }
+            .brand-line strong { font-size: 2.35rem; }
+            .brand-line span { font-size: 1.18rem; letter-spacing: 0.26em; }
+            h1 { margin-top: 118px; }
             .more-video-section { flex-direction: column; }
-        }
-        .badge + .badge {
-            margin-left: 8px;
         }
     </style>
 </head>
@@ -529,9 +594,9 @@
 
     <!-- ************ 头部区域 ************ -->
     <header>
-        <div class="algo-badge" data-i18n="header.badge">并行计算 · 实时评分 · 路经筛选</div>
+                <div class="brand-line" aria-label="鲸元力科技 Cetaforce"><strong>鲸元力科技</strong><span>CETAFORCE</span></div>
         <h1>P-MPC: <span class="name-glow" data-i18n="header.title">并行化模型预测控制</span></h1>
-        <p class="subtitle" data-i18n="header.subtitle">毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的稳定与鲁棒性</p>
+        <p class="subtitle" data-i18n="header.subtitle">毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的敏捷与鲁棒性</p>
     </header>
 
     <!-- ************ 主容器 ************ -->
@@ -542,13 +607,13 @@
             <div class="card">
                 <div class="card-icon">🎲</div>
                 <div class="card-title" data-i18n="core.card1.title">大规模并行模拟</div>
-                <p data-i18n="core.card1.desc">充分利用 GPU 并行架构，在毫秒级时间内模拟 <strong>5000+</strong> 条未来运动轨迹。从多维时间视角预演步态，覆盖复杂地形的不确定性。</p>
+                <p data-i18n="core.card1.desc">充分利用 GPU 并行架构，在 1 毫秒内模拟 <strong>5000+</strong> 条未来运动轨迹。从蒙特卡洛视角预演步态，覆盖复杂地形的不确定性。</p>
                 <div style="margin-top: 20px"><span class="badge" data-i18n="core.card1.badge1">吞吐量提升 120倍</span> <span class="badge" data-i18n="core.card1.badge2">vs 串行CPU</span></div>
             </div>
             <div class="card">
                 <div class="card-icon">🏆</div>
                 <div class="card-title" data-i18n="core.card2.title">独创评分机制</div>
-                <p data-i18n="core.card2.desc">平稳性 & 效率联合评分函数，实时筛选 pareto 最优步态。不依赖人工规则，完全由数据驱动选出最流畅、最节能、最安全的落脚点序列。</p>
+                <p data-i18n="core.card2.desc">平稳性 & 效率联合评分函数，实时筛选 pareto 最优步态。不依赖人工规则，完全由数据驱动选出最流畅、最节能的落脚点序列。</p>
                 <div style="margin-top: 20px"><span class="badge" data-i18n="core.card2.badge">评分延迟 < 0.3ms</span></div>
             </div>
             <div class="card">
@@ -577,11 +642,11 @@
                     <div class="stat-item">
                         <div class="stat-number">94<span style="font-size:1.5rem;">%</span></div>
                         <div class="stat-label" data-i18n="performance.metric3">能耗平滑度</div>
-                        <div style="margin-top: 8px; color: rgb(200, 215, 235);" data-i18n="performance.metric3.sub">优于MPPI 21%</div>
+                        <div style="margin-top: 8px; color: rgb(200, 215, 235);" data-i18n="performance.metric3.sub">优于 MPPI 21%</div>
                     </div>
                 </div>
                 <hr style="margin: 30px 0;">
-                <p style="font-size: 1.1rem; color: rgb(231, 235, 242);" data-i18n="performance.desc">✔ 比传统MPC方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人上实测，能耗降低18%，机身倾斜角方差减少43%。</p>
+                <p style="font-size: 1.1rem; color: rgb(231, 235, 242);" data-i18n="performance.desc">✔ 比传统 MPPI 方法计算效率提升 6 倍，参数量仅为其 1/3。<br>✔ 在四足机器人 Unitree B2 上实测，能耗降低 18%，机身倾斜角方差减少 43%。</p>
             </div>
             <div class="card" style="display: flex; flex-direction: column;">
                 <div class="card-icon">🌍</div>
@@ -589,8 +654,8 @@
                 <ul style="list-style-type: none; margin-top: 10px;">
                     <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item1.title">复杂地形勘探</strong><span data-i18n="applications.item1.desc"> – 乱石堆、陡坡、废墟自适应行走，无需预先建模。</span></li>
                     <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item2.title">工业与搜救</strong><span data-i18n="applications.item2.desc"> – 在湿滑、坍塌环境中保持稳定，支持动态负载。</span></li>
-                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item3.title">机器人竞赛</strong><span data-i18n="applications.item3.desc"> – 奔跑下实时步态切换，越障更流畅。</span></li>
-                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item4.title">学术研究</strong><span data-i18n="applications.item4.desc"> – 即插即用的GPU步态规划模块，支持二次开发。</span></li>
+                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item3.title">敏捷机器人竞赛</strong><span data-i18n="applications.item3.desc"> – 高速奔跑下实时步态切换，越障更流畅。</span></li>
+                    <li style="margin-bottom: 20px; display: flex; gap: 12px;">🔹 <strong data-i18n="applications.item4.title">学术研究</strong><span data-i18n="applications.item4.desc"> – 即插即用的 GPU 步态规划模块，支持二次开发。</span></li>
                 </ul>
                 <div style="margin-top: auto; background: rgba(231, 235, 242, 0.1); border-radius: 30px; padding: 12px 20px; color: rgb(231, 235, 242); border: 1px solid rgb(64, 103, 160);" data-i18n="applications.integration">
                     📌 已集成到 ROS 2 / Isaac Sim 生态
@@ -598,38 +663,37 @@
             </div>
         </div>
 
-        <!-- 视频部分：原有两个视频 + 新增两个视频（稀疏地形）+ 新增稀疏楼梯爬行测试 -->
         <h2 class="section-title" style="margin-top: 70px;"><span data-i18n="videos.title">🎬 演示视频</span></h2>
-        
-        <!-- 第一组：基本行走 (B站 + YouTube) -->
+
+        <!-- 第一组：基本行走 -->
         <div class="video-section">
             <div class="video-item">
                 <h3 data-i18n="videos.bilibili.title">📺 Bilibili · 基本行走</h3>
-                <div class="video-wrapper" id="biliWrapper" style="cursor: pointer;">
+                <div class="video-wrapper" id="biliWrapper">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">🎥</div>
                         <div class="thumbnail-text" data-i18n="videos.bilibili.thumbnail">Bilibili 演示视频<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
-                    <iframe class="video-iframe" id="biliIframe" 
+                    <iframe class="video-iframe" id="biliIframe"
                             src=""
                             data-src="https://player.bilibili.com/player.html?bvid=BV1iiP5zfE9a&autoplay=1&high_quality=1&danmaku=0&loop=1"
-                            allowfullscreen="true" 
+                            allowfullscreen="true"
                             allow="autoplay; fullscreen">
                     </iframe>
                 </div>
                 <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.bilibili.caption">基本行走。</p>
             </div>
-            
+
             <div class="video-item">
                 <h3 data-i18n="videos.youtube.title">📺 YouTube · 基本行走</h3>
-                <div class="video-wrapper" id="ytWrapper" style="cursor: pointer;">
+                <div class="video-wrapper" id="ytWrapper">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">🎬</div>
                         <div class="thumbnail-text" data-i18n="videos.youtube.thumbnail">YouTube 演示视频<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
-                    <iframe class="video-iframe" id="ytIframe" 
+                    <iframe class="video-iframe" id="ytIframe"
                             src=""
                             data-src="https://www.youtube.com/embed/wWwhnUhoblE?autoplay=1&mute=0&modestbranding=1&rel=0&loop=1&playlist=wWwhnUhoblE"
                             allowfullscreen="true"
@@ -640,37 +704,37 @@
             </div>
         </div>
 
-        <!-- 第二组：稀疏地形鲁棒性 (B站 + YouTube) -->
+        <!-- 第二组：稀疏地形鲁棒性 -->
         <div class="video-section" style="margin-top: 0;">
             <div class="video-item">
                 <h3 data-i18n="videos.new1.title">📺 Bilibili · 稀疏地形鲁棒性</h3>
-                <div class="video-wrapper" id="newBiliWrapper" style="cursor: pointer;">
+                <div class="video-wrapper" id="newBiliWrapper">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">🌄</div>
                         <div class="thumbnail-text" data-i18n="videos.new1.thumbnail">稀疏地形演示<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
-                    <iframe class="video-iframe" id="newBiliIframe" 
+                    <iframe class="video-iframe" id="newBiliIframe"
                             src=""
-                            data-src="//player.bilibili.com/player.html?isOutside=true&aid=116238122488269&bvid=BV1k5wEzkEqv&cid=36739157886&p=1&autoplay=1&high_quality=1&danmaku=0&loop=1"
-                            allowfullscreen="true" 
+                            data-src="https://player.bilibili.com/player.html?isOutside=true&aid=116238122488269&bvid=BV1k5wEzkEqv&cid=36739157886&p=1&autoplay=1&high_quality=1&danmaku=0&loop=1"
+                            allowfullscreen="true"
                             allow="autoplay; fullscreen">
                     </iframe>
                 </div>
-                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.new1.caption">在稀疏地形上的鲁棒性行走，基于模型的P-MPC算法，无需训练。</p>
+                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.new1.caption">在稀疏地形上的鲁棒性行走，基于模型的 P-MPC 算法，无需训练。</p>
             </div>
-            
+
             <div class="video-item">
                 <h3 data-i18n="videos.new2.title">📺 YouTube · 稀疏地形鲁棒性</h3>
-                <div class="video-wrapper" id="newYtWrapper" style="cursor: pointer;">
+                <div class="video-wrapper" id="newYtWrapper">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">⛰️</div>
                         <div class="thumbnail-text" data-i18n="videos.new2.thumbnail">稀疏地形演示<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
-                    <iframe class="video-iframe" id="newYtIframe" 
+                    <iframe class="video-iframe" id="newYtIframe"
                             src=""
-                            data-src="https://www.youtube.com/embed/SVAVJnYpyH8"
+                            data-src="https://www.youtube.com/embed/SVAVJnYpyH8?autoplay=1&mute=0&modestbranding=1&rel=0&loop=1&playlist=SVAVJnYpyH8"
                             allowfullscreen="true"
                             allow="autoplay; fullscreen">
                     </iframe>
@@ -679,35 +743,35 @@
             </div>
         </div>
 
-        <!-- 第三组（新增）：稀疏楼梯爬行测试 (B站 + YouTube) -->
+        <!-- 第三组：稀疏楼梯爬行测试 -->
         <div class="video-section" style="margin-top: 0;">
             <div class="video-item">
                 <h3 data-i18n="videos.stairs.title">📺 Bilibili · 稀疏楼梯爬行测试</h3>
-                <div class="video-wrapper" id="stairsBiliWrapper" style="cursor: pointer;">
+                <div class="video-wrapper" id="stairsBiliWrapper">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">🪜</div>
                         <div class="thumbnail-text" data-i18n="videos.stairs.thumbnail">稀疏楼梯爬行测试<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
-                    <iframe class="video-iframe" id="stairsBiliIframe" 
+                    <iframe class="video-iframe" id="stairsBiliIframe"
                             src=""
-                            data-src="//player.bilibili.com/player.html?isOutside=true&aid=116347409274137&bvid=BV1EXDMB2EEm&cid=37243258935&p=1&autoplay=1&high_quality=1&danmaku=0&loop=1"
-                            allowfullscreen="true" 
+                            data-src="https://player.bilibili.com/player.html?isOutside=true&aid=116347409274137&bvid=BV1EXDMB2EEm&cid=37243258935&p=1&autoplay=1&high_quality=1&danmaku=0&loop=1"
+                            allowfullscreen="true"
                             allow="autoplay; fullscreen">
                     </iframe>
                 </div>
                 <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.stairs.caption">基于模型预测控制四足机器人运动控制算法的稀疏楼梯爬行测试。</p>
             </div>
-            
+
             <div class="video-item">
                 <h3 data-i18n="videos.stairsYt.title">📺 YouTube · 稀疏楼梯爬行测试</h3>
-                <div class="video-wrapper" id="stairsYtWrapper" style="cursor: pointer;">
+                <div class="video-wrapper" id="stairsYtWrapper">
                     <div class="video-thumbnail custom-thumbnail">
                         <div class="thumbnail-icon">🪜</div>
                         <div class="thumbnail-text" data-i18n="videos.stairsYt.thumbnail">稀疏楼梯爬行测试<br>点击播放</div>
                     </div>
                     <div class="play-button">▶</div>
-                    <iframe class="video-iframe" id="stairsYtIframe" 
+                    <iframe class="video-iframe" id="stairsYtIframe"
                             src=""
                             data-src="https://www.youtube.com/embed/VbTDd8mwPqo?autoplay=1&mute=0&modestbranding=1&rel=0&loop=1&playlist=VbTDd8mwPqo"
                             allowfullscreen="true"
@@ -718,7 +782,7 @@
             </div>
         </div>
 
-        <!-- ========== 新增：更多视频区域 (保留原样) ========== -->
+        <!-- 更多内容 -->
         <div class="more-video-section">
             <div class="more-video-item">
                 <h3 data-i18n="moreVideos.title">📌 更多内容</h3>
@@ -739,13 +803,13 @@
                         <span>cetaforce@outlook.com</span>
                     </div>
                     <span class="divider">|</span>
-                    
+
                     <div class="contact-item">
                         <span class="icon">📱</span>
                         <span>+86 185-8161-8205</span>
                     </div>
                     <span class="divider">|</span>
-                
+
                     <div class="contact-item wechat-container">
                         <span class="icon"><i class="fab fa-weixin"></i></span>
                         <span data-i18n="contact.wechat">微信咨询</span>
@@ -756,35 +820,50 @@
                         </div>
                     </div>
                     <span class="divider">|</span>
-                
+
                     <span class="btn-paper" data-i18n="contact.paper">技术白皮书 · 合作洽谈</span>
                 </div>
                 <p style="margin-top: 20px; color: rgb(200, 215, 235); font-size:0.9rem;" data-i18n="contact.hours">📞 手机 / 微信 工作日 9:00-18:00 在线</p>
             </div>
-            <p style="margin-top: 30px; color: rgb(200, 215, 235);" data-i18n="contact.footer">🔬 算法底层框架已搭建完成 · 承接机器人订制调试 · 欢迎学术交流与合作测试</p>
+            <p style="margin-top: 30px; color: rgb(200, 215, 235);" data-i18n="contact.footer">🔬 鲸元力科技 Cetaforce 算法底层框架已搭建完成 · 承接机器人订制调试 · 欢迎学术交流与合作测试</p>
         </div>
     </div>
 
     <footer>
-        <p data-i18n="footer.company">© 2026 鲸元力科技 · 致力于机器人智能运动控制</p>
+        <p data-i18n="footer.company">© 2026 鲸元力科技 Cetaforce · 致力于机器人智能运动控制</p>
         <p style="margin-top: 12px; font-size: 0.8rem;" data-i18n="footer.slogan">P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion</p>
     </footer>
 
     <script>
-        // 视频播放功能（原有 + 新增楼梯视频）
-        document.getElementById('biliWrapper').addEventListener('click', function() { if (this.classList.contains('active')) return; document.getElementById('biliIframe').src = document.getElementById('biliIframe').getAttribute('data-src'); this.classList.add('active'); });
-        document.getElementById('ytWrapper').addEventListener('click', function() { if (this.classList.contains('active')) return; document.getElementById('ytIframe').src = document.getElementById('ytIframe').getAttribute('data-src'); this.classList.add('active'); });
-        document.getElementById('newBiliWrapper').addEventListener('click', function() { if (this.classList.contains('active')) return; document.getElementById('newBiliIframe').src = document.getElementById('newBiliIframe').getAttribute('data-src'); this.classList.add('active'); });
-        document.getElementById('newYtWrapper').addEventListener('click', function() { if (this.classList.contains('active')) return; document.getElementById('newYtIframe').src = document.getElementById('newYtIframe').getAttribute('data-src'); this.classList.add('active'); });
-        document.getElementById('stairsBiliWrapper').addEventListener('click', function() { if (this.classList.contains('active')) return; document.getElementById('stairsBiliIframe').src = document.getElementById('stairsBiliIframe').getAttribute('data-src'); this.classList.add('active'); });
-        document.getElementById('stairsYtWrapper').addEventListener('click', function() { if (this.classList.contains('active')) return; document.getElementById('stairsYtIframe').src = document.getElementById('stairsYtIframe').getAttribute('data-src'); this.classList.add('active'); });
+        // 视频配置：后续新增视频时，只需在这里添加一项，避免重复写 6 段监听逻辑
+        const videoConfigs = [
+            { wrapperId: 'biliWrapper', iframeId: 'biliIframe' },
+            { wrapperId: 'ytWrapper', iframeId: 'ytIframe' },
+            { wrapperId: 'newBiliWrapper', iframeId: 'newBiliIframe' },
+            { wrapperId: 'newYtWrapper', iframeId: 'newYtIframe' },
+            { wrapperId: 'stairsBiliWrapper', iframeId: 'stairsBiliIframe' },
+            { wrapperId: 'stairsYtWrapper', iframeId: 'stairsYtIframe' }
+        ];
 
-        // 多语言配置 (增加楼梯视频相关条目，并微调已有翻译确保准确性)
+        function initVideos() {
+            videoConfigs.forEach(({ wrapperId, iframeId }) => {
+                const wrapper = document.getElementById(wrapperId);
+                const iframe = document.getElementById(iframeId);
+                if (!wrapper || !iframe) return;
+                wrapper.addEventListener('click', function () {
+                    if (this.classList.contains('active')) return;
+                    iframe.src = iframe.getAttribute('data-src');
+                    this.classList.add('active');
+                });
+            });
+        }
+
         const translations = {
             zh: {
-                'header.badge': '并行计算 · 实时评分 · 路经筛选',
+                'header.brand': '<div><strong>鲸元力科技</strong><span>CETAFORCE</span></div>',
                 'header.title': '并行化模型预测控制',
                 'header.subtitle': '毫秒级模拟数千条轨迹，实时筛选最优步态，赋予四足机器人前所未有的敏捷与鲁棒性',
+
                 'core.title': '⚡ 算法核心',
                 'core.card1.title': '大规模并行模拟',
                 'core.card1.desc': '充分利用 GPU 并行架构，在 1 毫秒内模拟 <strong>5000+</strong> 条未来运动轨迹。从蒙特卡洛视角预演步态，覆盖复杂地形的不确定性。',
@@ -797,14 +876,16 @@
                 'core.card3.desc': '在乱石、斜坡、雪地等非结构化环境中，动态重规划步态。本体感知与轨迹评分闭环，机器人摔倒率降低 <strong>76%</strong> （200+次试验）。',
                 'core.card3.badge1': '未知环境泛化',
                 'core.card3.badge2': '零样本迁移',
+
                 'performance.title': '📊 性能对比',
                 'performance.metric1': '单次规划延迟',
                 'performance.metric1.sub': '▼ 62% vs MPC',
                 'performance.metric2': '并行轨迹数',
                 'performance.metric2.sub': 'GPU 原生加速',
                 'performance.metric3': '能耗平滑度',
-                'performance.metric3.sub': '优于MPPI 21%',
-                'performance.desc': '✔ 比传统MPPI方法计算效率提升6倍，参数量仅为其1/3。<br>✔ 在四足机器人Unitree B2上实测，能耗降低18%，机身倾斜角方差减少43%。',
+                'performance.metric3.sub': '优于 MPPI 21%',
+                'performance.desc': '✔ 比传统 MPPI 方法计算效率提升 6 倍，参数量仅为其 1/3。<br>✔ 在四足机器人 Unitree B2 上实测，能耗降低 18%，机身倾斜角方差减少 43%。',
+
                 'applications.title': '应用场景',
                 'applications.item1.title': '复杂地形勘探',
                 'applications.item1.desc': ' – 乱石堆、陡坡、废墟自适应行走，无需预先建模。',
@@ -813,8 +894,9 @@
                 'applications.item3.title': '敏捷机器人竞赛',
                 'applications.item3.desc': ' – 高速奔跑下实时步态切换，越障更流畅。',
                 'applications.item4.title': '学术研究',
-                'applications.item4.desc': ' – 即插即用的GPU步态规划模块，支持二次开发。',
+                'applications.item4.desc': ' – 即插即用的 GPU 步态规划模块，支持二次开发。',
                 'applications.integration': '📌 已集成到 ROS 2 / Isaac Sim 生态',
+
                 'videos.title': '🎬 演示视频',
                 'videos.bilibili.title': '📺 Bilibili · 基本行走',
                 'videos.bilibili.thumbnail': 'Bilibili 演示视频<br>点击播放',
@@ -824,7 +906,7 @@
                 'videos.youtube.caption': '基本行走',
                 'videos.new1.title': '📺 Bilibili · 稀疏地形鲁棒性',
                 'videos.new1.thumbnail': '稀疏地形演示<br>点击播放',
-                'videos.new1.caption': '在稀疏地形上的鲁棒性行走，基于模型的P-MPC算法，无需训练。',
+                'videos.new1.caption': '在稀疏地形上的鲁棒性行走，基于模型的 P-MPC 算法，无需训练。',
                 'videos.new2.title': '📺 YouTube · 稀疏地形鲁棒性',
                 'videos.new2.thumbnail': '稀疏地形演示<br>点击播放',
                 'videos.new2.caption': '鲁棒的稀疏地形行走演示，基于模型的并行化模型预测控制。',
@@ -834,48 +916,268 @@
                 'videos.stairsYt.title': '📺 YouTube · 稀疏楼梯爬行测试',
                 'videos.stairsYt.thumbnail': '稀疏楼梯爬行测试<br>点击播放',
                 'videos.stairsYt.caption': '基于模型预测控制的四足机器人稀疏楼梯爬行测试，展现优越的鲁棒性与通过能力。',
+
                 'moreVideos.title': '📌 更多内容',
                 'moreVideos.mainTitle': '敬请期待',
                 'moreVideos.desc': '更多精彩演示视频即将上线，包括复杂地形、高速奔跑、负重测试等场景，持续更新中……',
+
                 'contact.wechat': '微信咨询',
                 'contact.qr.scan': '扫码添加',
                 'contact.paper': '技术白皮书 · 合作洽谈',
                 'contact.hours': '📞 手机 / 微信 工作日 9:00-18:00 在线',
-                'contact.footer': '🔬 算法底层框架已搭建完成 · 承接机器人订制调试 · 欢迎学术交流与合作测试',
-                'footer.company': '© 2026 鲸元力科技 · 致力于机器人智能运动控制',
+                'contact.footer': '🔬 鲸元力科技 Cetaforce 算法底层框架已搭建完成 · 承接机器人订制调试 · 欢迎学术交流与合作测试',
+
+                'footer.company': '© 2026 鲸元力科技 Cetaforce · 致力于机器人智能运动控制',
                 'footer.slogan': 'P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion'
             },
-            // 英文、德文、阿拉伯文已完整优化，保持与原风格一致，此处仅展示部分以确保代码可读，实际已包含全部条目
-            // 为了保持代码长度可管理，以下省略 en/de/ar 重复字段（实际上已在原结构中存在，此处补全新增 stairs 字段，其余保留原有）
+
+            en: {
+                'header.brand': '<div><strong>Cetaforce Technology</strong><span>CETAFORCE</span></div>',
+                'header.title': 'Parallelized Model Predictive Control',
+                'header.subtitle': 'Simulate thousands of trajectories within milliseconds, select the optimal gait in real time, and deliver unprecedented agility and robustness to quadruped robots.',
+
+                'core.title': '⚡ Core Algorithm',
+                'core.card1.title': 'Massively Parallel Simulation',
+                'core.card1.desc': 'Fully leverages GPU parallel architecture to simulate <strong>5000+</strong> future motion trajectories within 1 ms. Gaits are previewed from a Monte Carlo perspective to cover uncertainty in complex terrain.',
+                'core.card1.badge1': '120× higher throughput',
+                'core.card1.badge2': 'vs serial CPU',
+                'core.card2.title': 'Original Scoring Mechanism',
+                'core.card2.desc': 'A joint stability-and-efficiency scoring function selects Pareto-optimal gaits in real time. No hand-crafted rules are required; the system is fully data-driven to choose the smoothest and most energy-efficient foothold sequence.',
+                'core.card2.badge': 'Scoring latency < 0.3 ms',
+                'core.card3.title': 'Adaptive Robust Control',
+                'core.card3.desc': 'In unstructured environments such as rocks, slopes, and snow, the gait is dynamically replanned. With a closed loop between proprioception and trajectory scoring, the robot’s fall rate is reduced by <strong>76%</strong> across 200+ trials.',
+                'core.card3.badge1': 'Generalization to unknown environments',
+                'core.card3.badge2': 'Zero-shot transfer',
+
+                'performance.title': '📊 Performance Comparison',
+                'performance.metric1': 'Planning latency per cycle',
+                'performance.metric1.sub': '▼ 62% vs MPC',
+                'performance.metric2': 'Parallel trajectories',
+                'performance.metric2.sub': 'Native GPU acceleration',
+                'performance.metric3': 'Energy smoothness',
+                'performance.metric3.sub': '21% better than MPPI',
+                'performance.desc': '✔ 6× more computationally efficient than conventional MPPI, with only one-third of the parameter count.<br>✔ On the quadruped robot Unitree B2, measured energy consumption drops by 18% and body pitch/roll variance decreases by 43%.',
+
+                'applications.title': 'Applications',
+                'applications.item1.title': 'Complex Terrain Exploration',
+                'applications.item1.desc': ' – Adaptive locomotion on rock piles, steep slopes, and ruins without prior modeling.',
+                'applications.item2.title': 'Industry and Search & Rescue',
+                'applications.item2.desc': ' – Maintains stability on slippery or collapsed terrain while supporting dynamic payloads.',
+                'applications.item3.title': 'Agile Robotics Competitions',
+                'applications.item3.desc': ' – Real-time gait switching during high-speed running for smoother obstacle traversal.',
+                'applications.item4.title': 'Academic Research',
+                'applications.item4.desc': ' – A plug-and-play GPU gait planning module ready for secondary development.',
+                'applications.integration': '📌 Integrated into the ROS 2 / Isaac Sim ecosystem',
+
+                'videos.title': '🎬 Demo Videos',
+                'videos.bilibili.title': '📺 Bilibili · Basic Walking',
+                'videos.bilibili.thumbnail': 'Bilibili Demo Video<br>Click to Play',
+                'videos.bilibili.caption': 'Basic walking.',
+                'videos.youtube.title': '📺 YouTube · Basic Walking',
+                'videos.youtube.thumbnail': 'YouTube Demo Video<br>Click to Play',
+                'videos.youtube.caption': 'Basic walking.',
+                'videos.new1.title': '📺 Bilibili · Sparse Terrain Robustness',
+                'videos.new1.thumbnail': 'Sparse Terrain Demo<br>Click to Play',
+                'videos.new1.caption': 'Robust walking on sparse terrain using the model-based P-MPC algorithm, with no training required.',
+                'videos.new2.title': '📺 YouTube · Sparse Terrain Robustness',
+                'videos.new2.thumbnail': 'Sparse Terrain Demo<br>Click to Play',
+                'videos.new2.caption': 'A robust sparse-terrain walking demo based on parallelized model predictive control.',
+                'videos.stairs.title': '📺 Bilibili · Sparse Stair Climbing Test',
+                'videos.stairs.thumbnail': 'Sparse Stair Climbing Test<br>Click to Play',
+                'videos.stairs.caption': 'Sparse stair climbing test for a quadruped robot motion control algorithm based on model predictive control.',
+                'videos.stairsYt.title': '📺 YouTube · Sparse Stair Climbing Test',
+                'videos.stairsYt.thumbnail': 'Sparse Stair Climbing Test<br>Click to Play',
+                'videos.stairsYt.caption': 'Quadruped sparse stair climbing test based on model predictive control, demonstrating excellent robustness and traversal capability.',
+
+                'moreVideos.title': '📌 More Content',
+                'moreVideos.mainTitle': 'Coming Soon',
+                'moreVideos.desc': 'More exciting demo videos are on the way, including complex terrain, high-speed running, and payload tests. Stay tuned for updates…',
+
+                'contact.wechat': 'WeChat Inquiry',
+                'contact.qr.scan': 'Scan to Add',
+                'contact.paper': 'Technical White Paper · Business Cooperation',
+                'contact.hours': '📞 Phone / WeChat available on weekdays 9:00–18:00',
+                'contact.footer': '🔬 The core algorithm framework of Cetaforce has been completed · Custom robot tuning services available · Academic exchange and joint testing are welcome',
+
+                'footer.company': '© 2026 Cetaforce Technology · Dedicated to intelligent robot locomotion control',
+                'footer.slogan': 'P-MPC: Parallelized Model Predictive Control · GPU‑Accelerated Adaptive Locomotion'
+            },
+
+            de: {
+                'header.brand': '<div><strong>Cetaforce Technologie</strong><span>CETAFORCE</span></div>',
+                'header.title': 'Parallelisierte Modellprädiktive Regelung',
+                'header.subtitle': 'Tausende Trajektorien werden in Millisekunden simuliert, der optimale Gang wird in Echtzeit ausgewählt und vierbeinigen Robotern werden eine bislang unerreichte Agilität und Robustheit verliehen.',
+
+                'core.title': '⚡ Algorithmuskern',
+                'core.card1.title': 'Massive Parallelsimulation',
+                'core.card1.desc': 'Die GPU-Parallelarbeit wird vollständig genutzt, um innerhalb von 1 ms <strong>5000+</strong> zukünftige Bewegungsbahnen zu simulieren. Gänge werden aus Monte-Carlo-Perspektive vorausberechnet, um Unsicherheiten in komplexem Gelände abzudecken.',
+                'core.card1.badge1': '120× höherer Durchsatz',
+                'core.card1.badge2': 'vs serielle CPU',
+                'core.card2.title': 'Eigenständiger Bewertungsmechanismus',
+                'core.card2.desc': 'Eine gemeinsame Bewertungsfunktion für Stabilität und Effizienz wählt Pareto-optimale Gänge in Echtzeit aus. Ganz ohne manuelle Regeln bestimmt das datengetriebene Verfahren die flüssigste und energieeffizienteste Abfolge von Fußsetzpunkten.',
+                'core.card2.badge': 'Bewertungsverzögerung < 0,3 ms',
+                'core.card3.title': 'Adaptive robuste Regelung',
+                'core.card3.desc': 'In unstrukturierten Umgebungen wie Geröll, Hängen oder Schnee wird der Gang dynamisch neu geplant. Durch den geschlossenen Regelkreis aus Eigenwahrnehmung und Trajektorienbewertung sinkt die Sturzrate des Roboters in mehr als 200 Versuchen um <strong>76%</strong>.',
+                'core.card3.badge1': 'Generalisierung auf unbekannte Umgebungen',
+                'core.card3.badge2': 'Zero-Shot-Transfer',
+
+                'performance.title': '📊 Leistungsvergleich',
+                'performance.metric1': 'Planungsverzögerung je Zyklus',
+                'performance.metric1.sub': '▼ 62% vs MPC',
+                'performance.metric2': 'Parallele Trajektorien',
+                'performance.metric2.sub': 'Native GPU-Beschleunigung',
+                'performance.metric3': 'Glättung des Energieverbrauchs',
+                'performance.metric3.sub': '21% besser als MPPI',
+                'performance.desc': '✔ 6× effizienter als herkömmliche MPPI-Verfahren bei nur einem Drittel der Parameterzahl.<br>✔ Auf dem vierbeinigen Roboter Unitree B2 wurde eine Senkung des Energieverbrauchs um 18% und eine Verringerung der Varianz der Körperneigung um 43% gemessen.',
+
+                'applications.title': 'Anwendungsfelder',
+                'applications.item1.title': 'Erkundung komplexen Geländes',
+                'applications.item1.desc': ' – Adaptives Gehen auf Geröll, steilen Hängen und Trümmern ohne vorherige Modellierung.',
+                'applications.item2.title': 'Industrie und Rettungseinsätze',
+                'applications.item2.desc': ' – Bleibt auf rutschigem oder eingestürztem Gelände stabil und unterstützt dynamische Lasten.',
+                'applications.item3.title': 'Wettbewerbe für agile Robotik',
+                'applications.item3.desc': ' – Echtzeit-Gangwechsel beim schnellen Laufen für flüssigeres Überwinden von Hindernissen.',
+                'applications.item4.title': 'Akademische Forschung',
+                'applications.item4.desc': ' – Ein Plug-and-Play-Gangplanungsmodul auf GPU-Basis für die Weiterentwicklung.',
+                'applications.integration': '📌 In das ROS 2 / Isaac Sim-Ökosystem integriert',
+
+                'videos.title': '🎬 Demovideos',
+                'videos.bilibili.title': '📺 Bilibili · Grundlegendes Gehen',
+                'videos.bilibili.thumbnail': 'Bilibili-Demovideo<br>Zum Abspielen klicken',
+                'videos.bilibili.caption': 'Grundlegendes Gehen.',
+                'videos.youtube.title': '📺 YouTube · Grundlegendes Gehen',
+                'videos.youtube.thumbnail': 'YouTube-Demovideo<br>Zum Abspielen klicken',
+                'videos.youtube.caption': 'Grundlegendes Gehen.',
+                'videos.new1.title': '📺 Bilibili · Robustheit auf spärlichem Gelände',
+                'videos.new1.thumbnail': 'Demo zu spärlichem Gelände<br>Zum Abspielen klicken',
+                'videos.new1.caption': 'Robustes Gehen auf spärlichem Gelände mit dem modellbasierten P-MPC-Algorithmus, ganz ohne Training.',
+                'videos.new2.title': '📺 YouTube · Robustheit auf spärlichem Gelände',
+                'videos.new2.thumbnail': 'Demo zu spärlichem Gelände<br>Zum Abspielen klicken',
+                'videos.new2.caption': 'Eine robuste Geh-Demonstration auf spärlichem Gelände auf Basis parallelisierter modellprädiktiver Regelung.',
+                'videos.stairs.title': '📺 Bilibili · Test des Steigens auf spärlichen Treppen',
+                'videos.stairs.thumbnail': 'Test für spärliche Treppen<br>Zum Abspielen klicken',
+                'videos.stairs.caption': 'Test des Steigens auf spärlichen Treppen für einen vierbeinigen Roboter mit einer bewegungssteuernden Regelung auf Basis modellprädiktiver Regelung.',
+                'videos.stairsYt.title': '📺 YouTube · Test des Steigens auf spärlichen Treppen',
+                'videos.stairsYt.thumbnail': 'Test für spärliche Treppen<br>Zum Abspielen klicken',
+                'videos.stairsYt.caption': 'Test eines vierbeinigen Roboters zum Steigen auf spärlichen Treppen auf Basis modellprädiktiver Regelung mit ausgezeichneter Robustheit und Geländegängigkeit.',
+
+                'moreVideos.title': '📌 Mehr Inhalte',
+                'moreVideos.mainTitle': 'Demnächst verfügbar',
+                'moreVideos.desc': 'Weitere spannende Demovideos folgen bald, darunter komplexes Gelände, Hochgeschwindigkeitslauf und Lasttests. Bleiben Sie dran…',
+
+                'contact.wechat': 'WeChat-Kontakt',
+                'contact.qr.scan': 'Zum Hinzufügen scannen',
+                'contact.paper': 'Technisches Whitepaper · Geschäftliche Zusammenarbeit',
+                'contact.hours': '📞 Telefon / WeChat werktags von 9:00 bis 18:00 erreichbar',
+                'contact.footer': '🔬 Das grundlegende Algorithmus-Framework von Cetaforce ist fertiggestellt · Individuelle Robotik-Abstimmung verfügbar · Akademischer Austausch und gemeinsame Tests sind willkommen',
+
+                'footer.company': '© 2026 Cetaforce Technologie · Für intelligente Bewegungsregelung von Robotern',
+                'footer.slogan': 'P-MPC: Parallelisierte Modellprädiktive Regelung · GPU‑Beschleunigte adaptive Lokomotion'
+            },
+
+            ar: {
+                'header.brand': '<div><strong>شركة سيتافورس للتقنية</strong><span>CETAFORCE</span></div>',
+                'header.title': 'التحكم التنبؤي بالنموذج المتوازي',
+                'header.subtitle': 'محاكاة آلاف المسارات خلال أجزاء من الألف من الثانية، واختيار أفضل مشية في الوقت الحقيقي، ومنح الروبوتات رباعية الأرجل مستوى غير مسبوق من الرشاقة والمتانة.',
+
+                'core.title': '⚡ جوهر الخوارزمية',
+                'core.card1.title': 'محاكاة متوازية واسعة النطاق',
+                'core.card1.desc': 'استفادة كاملة من البنية المتوازية لوحدة GPU لمحاكاة <strong>5000+</strong> مسار حركة مستقبلي خلال 1 مللي ثانية. تتم معاينة المشيات بمنظور مونت كارلو لتغطية عدم اليقين في التضاريس المعقدة.',
+                'core.card1.badge1': 'زيادة في الإنتاجية بمقدار 120 مرة',
+                'core.card1.badge2': 'مقارنةً بالمعالجة التسلسلية على CPU',
+                'core.card2.title': 'آلية تقييم مبتكرة',
+                'core.card2.desc': 'دالة تقييم مشتركة للاستقرار والكفاءة تختار المشيات المثلى وفق مفهوم باريتو في الزمن الحقيقي. من دون قواعد يدوية، يحدد النظام المعتمد على البيانات بالكامل أكثر تسلسل سلاسة وكفاءةً في استهلاك الطاقة لنقاط الهبوط.',
+                'core.card2.badge': 'زمن التأخير في التقييم < 0.3 مللي ثانية',
+                'core.card3.title': 'تحكم تكيفي متين',
+                'core.card3.desc': 'في البيئات غير المنظمة مثل الصخور والمنحدرات والثلوج، يُعاد تخطيط المشية ديناميكياً. وبفضل الحلقة المغلقة بين الإحساس الذاتي وتقييم المسار، انخفض معدل سقوط الروبوت بنسبة <strong>76%</strong> عبر أكثر من 200 تجربة.',
+                'core.card3.badge1': 'تعميم على البيئات غير المعروفة',
+                'core.card3.badge2': 'انتقال صفري العينات',
+
+                'performance.title': '📊 مقارنة الأداء',
+                'performance.metric1': 'زمن التخطيط في كل دورة',
+                'performance.metric1.sub': '▼ أقل بـ 62% من MPC',
+                'performance.metric2': 'عدد المسارات المتوازية',
+                'performance.metric2.sub': 'تسريع أصلي عبر GPU',
+                'performance.metric3': 'نعومة استهلاك الطاقة',
+                'performance.metric3.sub': 'أفضل من MPPI بنسبة 21%',
+                'performance.desc': '✔ أكثر كفاءة حسابياً بـ 6 مرات من أساليب MPPI التقليدية، مع عدد معاملات لا يتجاوز ثلثها.<br>✔ على الروبوت الرباعي Unitree B2 انخفض استهلاك الطاقة بنسبة 18% وتراجعت تباينات ميلان الجسم بنسبة 43%.',
+
+                'applications.title': 'مجالات التطبيق',
+                'applications.item1.title': 'استكشاف التضاريس المعقدة',
+                'applications.item1.desc': ' – حركة تكيفية على الصخور والمنحدرات الحادة والأنقاض من دون نمذجة مسبقة.',
+                'applications.item2.title': 'الصناعة والإنقاذ',
+                'applications.item2.desc': ' – يحافظ على الاستقرار في البيئات الزلقة أو المنهارة مع دعم الأحمال الديناميكية.',
+                'applications.item3.title': 'مسابقات الروبوتات الرشيقة',
+                'applications.item3.desc': ' – تبديل المشية في الوقت الحقيقي أثناء الجري السريع لعبور العوائق بسلاسة أكبر.',
+                'applications.item4.title': 'البحث الأكاديمي',
+                'applications.item4.desc': ' – وحدة تخطيط مشية جاهزة للعمل تعتمد على GPU وتدعم التطوير الثانوي.',
+                'applications.integration': '📌 تم دمجه ضمن منظومة ROS 2 / Isaac Sim',
+
+                'videos.title': '🎬 فيديوهات العرض',
+                'videos.bilibili.title': '📺 Bilibili · المشي الأساسي',
+                'videos.bilibili.thumbnail': 'فيديو عرض Bilibili<br>اضغط للتشغيل',
+                'videos.bilibili.caption': 'المشي الأساسي.',
+                'videos.youtube.title': '📺 YouTube · المشي الأساسي',
+                'videos.youtube.thumbnail': 'فيديو عرض YouTube<br>اضغط للتشغيل',
+                'videos.youtube.caption': 'المشي الأساسي.',
+                'videos.new1.title': '📺 Bilibili · المتانة على التضاريس المتباعدة',
+                'videos.new1.thumbnail': 'عرض للتضاريس المتباعدة<br>اضغط للتشغيل',
+                'videos.new1.caption': 'مشي متين على تضاريس متباعدة باستخدام خوارزمية P-MPC المعتمدة على النموذج ومن دون تدريب.',
+                'videos.new2.title': '📺 YouTube · المتانة على التضاريس المتباعدة',
+                'videos.new2.thumbnail': 'عرض للتضاريس المتباعدة<br>اضغط للتشغيل',
+                'videos.new2.caption': 'عرض لمشي متين على تضاريس متباعدة يعتمد على التحكم التنبؤي بالنموذج المتوازي.',
+                'videos.stairs.title': '📺 Bilibili · اختبار صعود السلالم المتباعدة',
+                'videos.stairs.thumbnail': 'اختبار صعود السلالم المتباعدة<br>اضغط للتشغيل',
+                'videos.stairs.caption': 'اختبار صعود السلالم المتباعدة لخوارزمية التحكم في حركة روبوت رباعي الأرجل القائمة على التحكم التنبؤي بالنموذج.',
+                'videos.stairsYt.title': '📺 YouTube · اختبار صعود السلالم المتباعدة',
+                'videos.stairsYt.thumbnail': 'اختبار صعود السلالم المتباعدة<br>اضغط للتشغيل',
+                'videos.stairsYt.caption': 'اختبار لروبوت رباعي الأرجل في صعود السلالم المتباعدة اعتماداً على التحكم التنبؤي بالنموذج، مع إظهار متانة عالية وقدرة ممتازة على اجتياز العوائق.',
+
+                'moreVideos.title': '📌 المزيد من المحتوى',
+                'moreVideos.mainTitle': 'قريباً',
+                'moreVideos.desc': 'سيتم قريباً إطلاق المزيد من فيديوهات العرض المميزة، بما يشمل التضاريس المعقدة والجري السريع واختبارات الأحمال، مع تحديثات مستمرة…',
+
+                'contact.wechat': 'استشارة عبر WeChat',
+                'contact.qr.scan': 'امسح للإضافة',
+                'contact.paper': 'الورقة البيضاء التقنية · التعاون التجاري',
+                'contact.hours': '📞 الهاتف / WeChat متاحان في أيام العمل من 9:00 إلى 18:00',
+                'contact.footer': '🔬 تم إنجاز الإطار الأساسي للخوارزمية في Cetaforce · متاح تنفيذ وضبط روبوتات مخصصة · نرحب بالتبادل الأكاديمي والاختبارات التعاونية',
+
+                'footer.company': '© 2026 شركة Cetaforce Technology · ملتزمون بالتحكم الذكي في حركة الروبوتات',
+                'footer.slogan': 'P-MPC: التحكم التنبؤي بالنموذج المتوازي · حركة تكيفية مسرّعة بواسطة GPU'
+            }
         };
-        // 为节省篇幅，在原有 translations 基础上补充新增楼梯字段（实际会合并）
-        translations.en = {
-            ...(window.initialEn || {}), 'videos.stairs.title': '📺 Bilibili · Sparse Stair Climbing Test', 'videos.stairs.thumbnail': 'Sparse Stair Test<br>Click to Play', 'videos.stairs.caption': 'Model predictive control based quadruped robot motion control algorithm for sparse stair climbing test.',
-            'videos.stairsYt.title': '📺 YouTube · Sparse Stair Climbing Test', 'videos.stairsYt.thumbnail': 'Sparse Stair Test<br>Click to Play', 'videos.stairsYt.caption': 'Quadruped robot sparse stair climbing test based on model predictive control, demonstrating superior robustness and traversability.'
+
+        const pageTitles = {
+            zh: '鲸元力科技 Cetaforce',
+            en: 'Cetaforce Technology',
+            de: 'Cetaforce Technologie',
+            ar: 'شركة Cetaforce Technology'
         };
-        // 确保完整合并，为避免破坏，已在下方函数中完整定义。
-        // 实际完整翻译（英文、德文、阿拉伯文）与原版保持一致并补充楼梯测试，由于输出长度限制，将保留核心修正版本。
-        // 为确保所有语言正确，直接调用下方 switchLanguage 时使用动态补充逻辑。
-        function extendTranslations() {
-            const stairsEn = { 'videos.stairs.title': '📺 Bilibili · Sparse Stair Climbing Test', 'videos.stairs.thumbnail': 'Sparse Stair Test<br>Click to Play', 'videos.stairs.caption': 'Model predictive control based quadruped robot motion control algorithm for sparse stair climbing test.', 'videos.stairsYt.title': '📺 YouTube · Sparse Stair Climbing Test', 'videos.stairsYt.thumbnail': 'Sparse Stair Test<br>Click to Play', 'videos.stairsYt.caption': 'Quadruped robot sparse stair climbing test based on model predictive control, demonstrating superior robustness and traversability.' };
-            const stairsDe = { 'videos.stairs.title': '📺 Bilibili · Test des Treppensteigens auf spärlichem Untergrund', 'videos.stairs.thumbnail': 'Test spärliche Treppe<br>Zum Abspielen klicken', 'videos.stairs.caption': 'Modellprädiktive Regelung für vierbeinige Roboter - Test des Treppensteigens auf spärlichem Untergrund.', 'videos.stairsYt.title': '📺 YouTube · Test des Treppensteigens auf spärlichem Untergrund', 'videos.stairsYt.thumbnail': 'Test spärliche Treppe<br>Zum Abspielen klicken', 'videos.stairsYt.caption': 'Robuster Test des Treppensteigens auf spärlichem Untergrund mit modellprädiktiver Regelung.' };
-            const stairsAr = { 'videos.stairs.title': '📺 Bilibili · اختبار صعود السلالم المتناثرة', 'videos.stairs.thumbnail': 'اختبار السلالم المتناثرة<br>اضغط للتشغيل', 'videos.stairs.caption': 'خوارزمية التحكم في حركة الروبوت رباعي الأرجل القائمة على التحكم التنبؤي للنموذج لاختبار صعود السلالم المتناثرة.', 'videos.stairsYt.title': '📺 YouTube · اختبار صعود السلالم المتناثرة', 'videos.stairsYt.thumbnail': 'اختبار السلالم المتناثرة<br>اضغط للتشغيل', 'videos.stairsYt.caption': 'اختبار صعود السلالم المتناثرة لروبوت رباعي الأرجل يعتمد على التحكم التنبؤي للنموذج، مما يظهر متانة وقدرة فائقة على المرور.' };
-            Object.assign(translations.en, stairsEn); Object.assign(translations.de, stairsDe); Object.assign(translations.ar, stairsAr);
-        }
-        extendTranslations();
 
         function switchLanguage(lang, btn) {
             document.body.setAttribute('lang', lang);
+            document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-CN' : lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) element.innerHTML = translations[lang][key];
+                if (translations[lang] && translations[lang][key] !== undefined) {
+                    element.innerHTML = translations[lang][key];
+                }
             });
-            const titleMap = { 'zh': '鲸元力科技', 'en': 'Cetaforce Tech', 'de': 'Cetaforce Technologie', 'ar': 'تقنية Cetaforce' };
-            document.getElementById('pageTitle').textContent = titleMap[lang] || titleMap.zh;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById('pageTitle').textContent = pageTitles[lang] || pageTitles.zh;
+            document.querySelectorAll('.lang-btn').forEach(item => item.classList.remove('active'));
             if (btn) btn.classList.add('active');
         }
-        window.onload = () => { const zhBtn = Array.from(document.querySelectorAll('.lang-btn')).find(btn => btn.textContent.includes('中文')); switchLanguage('zh', zhBtn); };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initVideos();
+            const zhBtn = Array.from(document.querySelectorAll('.lang-btn'))
+                .find(btn => btn.textContent.includes('中文'));
+            switchLanguage('zh', zhBtn);
+        });
     </script>
 </body>
 </html>
