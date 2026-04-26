@@ -782,6 +782,46 @@
             </div>
         </div>
 
+
+        <!-- 第四组：新增演示视频 -->
+        <div class="video-section" style="margin-top: 0;">
+            <div class="video-item">
+                <h3 data-i18n="videos.extraBili.title">📺 Bilibili · 自研运动控制算法在宇树机器人上的适配</h3>
+                <div class="video-wrapper" id="extraBiliWrapper">
+                    <div class="video-thumbnail custom-thumbnail">
+                        <div class="thumbnail-icon">🤖</div>
+                        <div class="thumbnail-text" data-i18n="videos.extraBili.thumbnail">宇树机器人适配演示<br>点击播放</div>
+                    </div>
+                    <div class="play-button">▶</div>
+                    <iframe class="video-iframe" id="extraBiliIframe"
+                            src=""
+                            data-src="https://player.bilibili.com/player.html?isOutside=true&aid=116471409678229&bvid=BV1LqovBPEyn&cid=37853531146&p=1&autoplay=1&high_quality=1&danmaku=0&loop=1"
+                            allowfullscreen="true"
+                            allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.extraBili.caption">自研运动控制算法在宇树机器人上的适配演示。</p>
+            </div>
+
+            <div class="video-item">
+                <h3 data-i18n="videos.extraYt.title">📺 YouTube · 自研运动控制算法在宇树机器人上的适配</h3>
+                <div class="video-wrapper" id="extraYtWrapper">
+                    <div class="video-thumbnail custom-thumbnail">
+                        <div class="thumbnail-icon">🤖</div>
+                        <div class="thumbnail-text" data-i18n="videos.extraYt.thumbnail">宇树机器人适配演示<br>点击播放</div>
+                    </div>
+                    <div class="play-button">▶</div>
+                    <iframe class="video-iframe" id="extraYtIframe"
+                            src=""
+                            data-src="https://www.youtube.com/embed/prQ7syQGIaU?autoplay=1&mute=0&modestbranding=1&rel=0&loop=1&playlist=prQ7syQGIaU"
+                            allowfullscreen="true"
+                            allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <p style="margin-top: 15px; color: rgb(200, 215, 235);" data-i18n="videos.extraYt.caption">自研运动控制算法在宇树机器人上的适配演示。</p>
+            </div>
+        </div>
+
         <!-- 更多内容 -->
         <div class="more-video-section">
             <div class="more-video-item">
@@ -842,7 +882,9 @@
             { wrapperId: 'newBiliWrapper', iframeId: 'newBiliIframe' },
             { wrapperId: 'newYtWrapper', iframeId: 'newYtIframe' },
             { wrapperId: 'stairsBiliWrapper', iframeId: 'stairsBiliIframe' },
-            { wrapperId: 'stairsYtWrapper', iframeId: 'stairsYtIframe' }
+            { wrapperId: 'stairsYtWrapper', iframeId: 'stairsYtIframe' },
+            { wrapperId: 'extraBiliWrapper', iframeId: 'extraBiliIframe' },
+            { wrapperId: 'extraYtWrapper', iframeId: 'extraYtIframe' }
         ];
 
         function initVideos() {
@@ -916,6 +958,12 @@
                 'videos.stairsYt.title': '📺 YouTube · 稀疏楼梯爬行测试',
                 'videos.stairsYt.thumbnail': '稀疏楼梯爬行测试<br>点击播放',
                 'videos.stairsYt.caption': '基于模型预测控制的四足机器人稀疏楼梯爬行测试，展现优越的鲁棒性与通过能力。',
+                'videos.extraBili.title': '📺 Bilibili · 自研运动控制算法在宇树机器人上的适配',
+                'videos.extraBili.thumbnail': '宇树机器人适配演示<br>点击播放',
+                'videos.extraBili.caption': '自研运动控制算法在宇树机器人上的适配演示。',
+                'videos.extraYt.title': '📺 YouTube · 自研运动控制算法在宇树机器人上的适配',
+                'videos.extraYt.thumbnail': '宇树机器人适配演示<br>点击播放',
+                'videos.extraYt.caption': '自研运动控制算法在宇树机器人上的适配演示。',
 
                 'moreVideos.title': '📌 更多内容',
                 'moreVideos.mainTitle': '敬请期待',
@@ -988,6 +1036,12 @@
                 'videos.stairsYt.title': '📺 YouTube · Sparse Stair Climbing Test',
                 'videos.stairsYt.thumbnail': 'Sparse Stair Climbing Test<br>Click to Play',
                 'videos.stairsYt.caption': 'Quadruped sparse stair climbing test based on model predictive control, demonstrating excellent robustness and traversal capability.',
+                'videos.extraBili.title': '📺 Bilibili · Self-Developed Motion Control Algorithm Adapted to Unitree Robots',
+                'videos.extraBili.thumbnail': 'Unitree Robot Adaptation Demo<br>Click to Play',
+                'videos.extraBili.caption': 'A demo showing the adaptation of a self-developed motion control algorithm to Unitree robots.',
+                'videos.extraYt.title': '📺 YouTube · Self-Developed Motion Control Algorithm Adapted to Unitree Robots',
+                'videos.extraYt.thumbnail': 'Unitree Robot Adaptation Demo<br>Click to Play',
+                'videos.extraYt.caption': 'A demo showing the adaptation of a self-developed motion control algorithm to Unitree robots.',
 
                 'moreVideos.title': '📌 More Content',
                 'moreVideos.mainTitle': 'Coming Soon',
@@ -1060,6 +1114,12 @@
                 'videos.stairsYt.title': '📺 YouTube · Test des Steigens auf spärlichen Treppen',
                 'videos.stairsYt.thumbnail': 'Test für spärliche Treppen<br>Zum Abspielen klicken',
                 'videos.stairsYt.caption': 'Test eines vierbeinigen Roboters zum Steigen auf spärlichen Treppen auf Basis modellprädiktiver Regelung mit ausgezeichneter Robustheit und Geländegängigkeit.',
+                'videos.extraBili.title': '📺 Bilibili · Anpassung eines selbstentwickelten Bewegungssteuerungsalgorithmus an Unitree-Roboter',
+                'videos.extraBili.thumbnail': 'Demo zur Anpassung an Unitree-Roboter<br>Zum Abspielen klicken',
+                'videos.extraBili.caption': 'Eine Demo zur Anpassung eines selbstentwickelten Bewegungssteuerungsalgorithmus an Unitree-Roboter.',
+                'videos.extraYt.title': '📺 YouTube · Anpassung eines selbstentwickelten Bewegungssteuerungsalgorithmus an Unitree-Roboter',
+                'videos.extraYt.thumbnail': 'Demo zur Anpassung an Unitree-Roboter<br>Zum Abspielen klicken',
+                'videos.extraYt.caption': 'Eine Demo zur Anpassung eines selbstentwickelten Bewegungssteuerungsalgorithmus an Unitree-Roboter.',
 
                 'moreVideos.title': '📌 Mehr Inhalte',
                 'moreVideos.mainTitle': 'Demnächst verfügbar',
@@ -1132,6 +1192,12 @@
                 'videos.stairsYt.title': '📺 YouTube · اختبار صعود السلالم المتباعدة',
                 'videos.stairsYt.thumbnail': 'اختبار صعود السلالم المتباعدة<br>اضغط للتشغيل',
                 'videos.stairsYt.caption': 'اختبار لروبوت رباعي الأرجل في صعود السلالم المتباعدة اعتماداً على التحكم التنبؤي بالنموذج، مع إظهار متانة عالية وقدرة ممتازة على اجتياز العوائق.',
+                'videos.extraBili.title': '📺 Bilibili · تكييف خوارزمية تحكم حركي مطوّرة ذاتياً على روبوتات Unitree',
+                'videos.extraBili.thumbnail': 'عرض التكييف على روبوتات Unitree<br>اضغط للتشغيل',
+                'videos.extraBili.caption': 'عرض لتكييف خوارزمية تحكم حركي مطوّرة ذاتياً على روبوتات Unitree.',
+                'videos.extraYt.title': '📺 YouTube · تكييف خوارزمية تحكم حركي مطوّرة ذاتياً على روبوتات Unitree',
+                'videos.extraYt.thumbnail': 'عرض التكييف على روبوتات Unitree<br>اضغط للتشغيل',
+                'videos.extraYt.caption': 'عرض لتكييف خوارزمية تحكم حركي مطوّرة ذاتياً على روبوتات Unitree.',
 
                 'moreVideos.title': '📌 المزيد من المحتوى',
                 'moreVideos.mainTitle': 'قريباً',
